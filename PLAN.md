@@ -3,3 +3,7 @@
 
 ## Pre-Coding
 1. **<ins>Create the Step-by-Step Setup</ins>**: Created a listed step-by-step steup of how the software is going to flow and requirements. Once this is complete, input the step into an LLM (ChatGPT, Gemini, etc.) to create a flowchart of the requirements to have a visual of how the software itself is going to flow.
+
+## Coding
+
+## Validation Testing
