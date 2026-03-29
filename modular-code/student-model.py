@@ -58,7 +58,7 @@ def load_tokenizer() -> AutoTokenizer:
     """Load the Phi-3.5 Mini tokenizer with padding configured for training."""
     tokenizer = AutoTokenizer.from_pretrained(
         MODEL_ID,
-        trust_remote_code=True,
+        trust_remote_code=False,
     )
     # Phi-3.5 Mini uses <|endoftext|> as pad token by default; set explicitly
     tokenizer.pad_token = tokenizer.eos_token
@@ -72,9 +72,9 @@ def load_base_model(device_map: str = "auto") -> AutoModelForCausalLM:
         MODEL_ID,
         quantization_config=get_bnb_config(),
         device_map=device_map,
-        trust_remote_code=True,
+        trust_remote_code=False,
         torch_dtype=torch.bfloat16,
-        attn_implementation="flash_attention_2",  # remove if flash-attn not installed
+        # attn_implementation="flash_attention_2",  # remove if flash-attn not installed
     )
     model.config.use_cache = False          # required during training
     model.config.pretraining_tp = 1         # disable tensor parallelism for QLoRA
