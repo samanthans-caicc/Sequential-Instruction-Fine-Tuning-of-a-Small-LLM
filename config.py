@@ -40,7 +40,7 @@ class Stage1Config:
     max_seq_length: int     = 1024           # most Alpaca examples fit in 512-1024
 
     # Optimiser
-    learning_rate: float    = 2e-4
+    learning_rate: float    = 2e-5
     lr_scheduler: str       = "cosine"
     warmup_ratio: float     = 0.03
 
@@ -81,7 +81,7 @@ class Stage2Config:
     max_seq_length: int     = 2048           # teacher outputs tend to be longer
 
     # Optimiser — lower LR to preserve Stage 1 knowledge
-    learning_rate: float    = 1e-4
+    learning_rate: float    = 2e-5
     lr_scheduler: str       = "cosine"
     warmup_ratio: float     = 0.03
 
