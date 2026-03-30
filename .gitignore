@@ -1,2 +1,6 @@
 # Ignore PDF files
 *.pdf
+
+# Ignore temporary .md files
+CONTEXT_TRANSFER.md
+PLAN.md
