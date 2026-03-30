@@ -1,11 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=checkpoint0-baseline
-#SBATCH --partition=gpu1a100
+#SBATCH --partition=gpu1v100
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:1
-#SBATCH --mem=64G
 #SBATCH --time=01:30:00
 #SBATCH --output=logs/checkpoint0_baseline_%j.out
 #SBATCH --error=logs/checkpoint0_baseline_%j.err
@@ -47,7 +46,7 @@ echo ""
 # ---------------------------------------------------------------------------
 # 3. Navigate to project directory
 # ---------------------------------------------------------------------------
-cd $WORK/fluffy-umbrella || { echo "Project directory not found!"; exit 1; }
+cd /home/xso947/fluffy-umbrella || { echo "Project directory not found!"; exit 1; }
 
 mkdir -p logs data outputs
 
