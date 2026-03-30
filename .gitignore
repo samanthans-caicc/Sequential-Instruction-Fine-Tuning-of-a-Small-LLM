@@ -1,2 +1,2 @@
-# Ignore assignment PDF file.
-Assignment3_LLM_Agentic_Systems_Finetuning.pdf
+# Ignore PDF files
+*.pdf
