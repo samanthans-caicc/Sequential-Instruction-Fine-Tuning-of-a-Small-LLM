@@ -106,23 +106,17 @@ def load_stage2_data():
 # Formatting
 # ---------------------------------------------------------------------------
 
-def formatting_func(examples: dict) -> list[str]:
+def formatting_func(example: dict) -> str:
     """
-    Format a batch of examples into full training strings (prompt + completion).
-    SFTTrainer calls this with a batch dict (dict of lists), not a list of dicts.
-    Loss is computed over the entire sequence — simpler and more robust than
-    using DataCollatorForCompletionOnlyLM with a response template.
+    Format a single example into a full training string (prompt + completion).
+    SFTTrainer calls this per-example (batched=False) and stores the result as
+    the 'text' field. Loss is computed over the entire sequence.
     """
-    n = len(examples["instruction"])
-    inputs = examples.get("input", [""] * n)
-    return [
-        student_model.format_phi35_training_example(
-            instruction=examples["instruction"][i],
-            output=examples["output"][i],
-            input_text=inputs[i] if inputs[i] else "",
-        )
-        for i in range(n)
-    ]
+    return student_model.format_phi35_training_example(
+        instruction=example["instruction"],
+        output=example["output"],
+        input_text=example.get("input", ""),
+    )
 
 
 # ---------------------------------------------------------------------------
