@@ -217,7 +217,7 @@ def train(stage: int, output_dir: str, data_dir: str, resume_from: str | None):
         train_dataset=train_ds,
         eval_dataset=eval_ds,
         formatting_func=formatting_func,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         max_seq_length=stage_cfg.max_seq_length,
         packing=False,
     )
