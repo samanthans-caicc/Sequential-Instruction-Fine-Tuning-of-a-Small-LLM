@@ -53,6 +53,9 @@ echo ""
 
 cd /home/xso947/fluffy-umbrella || { echo "Project directory not found!"; exit 1; }
 
+# HuggingFace token for gated models (Llama 3.1 70B)
+export HF_TOKEN=$HF_TOKEN
+
 mkdir -p logs data
 
 # ---------------------------------------------------------------------------
