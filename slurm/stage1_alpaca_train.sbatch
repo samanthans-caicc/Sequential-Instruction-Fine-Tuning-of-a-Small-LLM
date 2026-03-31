@@ -85,7 +85,7 @@ python modular-code/inference.py \
     --checkpoints 1 \
     --alpaca-eval data/alpaca_eval.json \
     --json-eval data/json_eval.json \
-    --output-dir outputs
+    --output-dir /home/xso947/fluffy-umbrella/outputs
 
 echo ""
 echo "=============================================="
