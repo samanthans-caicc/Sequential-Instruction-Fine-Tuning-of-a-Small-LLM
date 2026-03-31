@@ -106,19 +106,22 @@ def load_stage2_data():
 # Formatting
 # ---------------------------------------------------------------------------
 
-def formatting_func(examples: list[dict]) -> list[str]:
+def formatting_func(examples: dict) -> list[str]:
     """
     Format a batch of examples into full training strings (prompt + completion).
+    SFTTrainer calls this with a batch dict (dict of lists), not a list of dicts.
     Loss is computed over the entire sequence — simpler and more robust than
     using DataCollatorForCompletionOnlyLM with a response template.
     """
+    n = len(examples["instruction"])
+    inputs = examples.get("input", [""] * n)
     return [
         student_model.format_phi35_training_example(
-            instruction=ex["instruction"],
-            output=ex["output"],
-            input_text=ex.get("input", ""),
+            instruction=examples["instruction"][i],
+            output=examples["output"][i],
+            input_text=inputs[i] if inputs[i] else "",
         )
-        for ex in examples
+        for i in range(n)
     ]
 
 
@@ -162,12 +165,6 @@ def build_training_args(stage_cfg, output_dir: str, bf16: bool, fp16: bool):
         optim="paged_adamw_8bit",
     )
 
-    if _USE_SFT_CONFIG:
-        return _TrainingCls(
-            **common,
-            max_seq_length=stage_cfg.max_seq_length,
-            packing=False,
-        )
     return _TrainingCls(**common)
 
 
@@ -221,10 +218,9 @@ def train(stage: int, output_dir: str, data_dir: str, resume_from: str | None):
         eval_dataset=eval_ds,
         formatting_func=formatting_func,
         tokenizer=tokenizer,
+        max_seq_length=stage_cfg.max_seq_length,
+        packing=False,
     )
-    if not _USE_SFT_CONFIG:
-        trainer_kwargs["max_seq_length"] = stage_cfg.max_seq_length
-        trainer_kwargs["packing"] = False
 
     trainer = SFTTrainer(**trainer_kwargs)
 
