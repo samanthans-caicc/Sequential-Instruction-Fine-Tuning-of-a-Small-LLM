@@ -37,7 +37,7 @@ class Stage1Config:
     max_samples: int        = 52000          # use full Alpaca dataset
 
     # Tokenisation
-    max_seq_length: int     = 1024           # most Alpaca examples fit in 512-1024
+    max_seq_length: int     = 512            # Alpaca examples are typically <300 tokens; 512 saves ~2x training time
 
     # Optimiser
     learning_rate: float    = 2e-5
