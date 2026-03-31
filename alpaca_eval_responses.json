@@ -1,0 +1,47 @@
+[
+  {
+    "prompt_id": "alpaca_eval_0000",
+    "instruction": "Identify the type of adjective used in \"That is a beautiful sunset\":",
+    "input": "",
+    "reference": "Beautiful is an descriptive adjective.",
+    "response": "The adjective used in \"That is a beautiful sunset\" is \"beautiful.\" The type of adjective in this context is a descriptive adjective. Descriptive adjectives are used to describe the qualities or states of a noun (in this case, \"sunset\") by providing more information about its appearance, feeling, or other attributes. Here, \"beautiful\" is describing the visual appeal or aesthetic quality of the sunset, indicating that it is pleasing to look at.",
+    "generation_time_s": 231.02,
+    "response_token_count": 109
+  },
+  {
+    "prompt_id": "alpaca_eval_0001",
+    "instruction": "Classify the given piece of text as either a news article or an opinion article",
+    "input": "Dr. Johnson believes vaccinations are essential for protecting children from many deadly diseases.",
+    "reference": "This is a news article.",
+    "response": "The given piece of text, \"Dr. Johnson believes vaccinations are essential for protecting children from many deadly diseases,\" can be classified as an opinion article. This classification is based on the presence of a personal belief expressed by an individual (Dr. Johnson) regarding the importance of vaccinations. The text does not report on events, provide factual information, or present analysis or commentary from multiple perspectives, which are typical characteristics of a news article. Instead, it conveys a singular viewpoint, which is a hallmark of an opinion piece. Opinion articles often reflect the author's personal stance or interpretation on a particular issue and aim to influence readers' thoughts or encourage discussion.",
+    "generation_time_s": 322.1,
+    "response_token_count": 153
+  },
+  {
+    "prompt_id": "alpaca_eval_0002",
+    "instruction": "Search the web and report the exact number of countries in Africa.",
+    "input": "",
+    "reference": "There are 55 countries in Africa.",
+    "response": "According to the United Nations geoscheme, Africa is divided into 54 recognized sovereign countries as of my knowledge cutoff in 2023. Here is a list of them:\n\n1. Algeria\n2. Angola\n3. Benin\n4. Botswana\n5. Burkina Faso\n6. Burundi\n7. Cabo Verde\n8. Cameroon\n9. Central African Republic\n10. Chad\n11. Comoros\n12. Congo, Democratic Republic of the\n13. Congo, Republic of the\n14. Djibouti\n15. Egypt\n16. Equatorial Guinea\n17. Eritrea\n18. Ethiopia\n19. Gabon\n20. The Gambia\n21. Ghana\n22. Guinea\n23. Guinea-Bissau\n24. Ivory Coast\n25. Kenya\n26. Lesotho\n27. Liberia\n28. Libya\n29. Madagascar\n30. Malawi\n31. Mali\n32. Mauritania\n33. Mauritius\n34. Morocco\n35. Mozambique\n36. Namibia\n37. Niger\n38. Nigeria\n39. Rwanda\n40. S\u00e3o Tom\u00e9 and Pr\u00edncipe\n41. Senegal\n42. Seychelles\n43. Sierra Leone\n44. Somalia\n45. South Africa\n46. South Sudan\n47. Sudan\n48. Swaziland (now Eswatini)\n49. Tanzania\n50. Togo\n51. Tunisia\n52. Uganda\n53. Zambia\n54. Zimbabwe\n\nPlease note that the number of countries can change due to geopolitical changes, so it's always good to check the latest sources for the most current information.",
+    "generation_time_s": 888.64,
+    "response_token_count": 455
+  },
+  {
+    "prompt_id": "alpaca_eval_0003",
+    "instruction": "Determine the focal length of this camera",
+    "input": "",
+    "reference": "The focal length of the camera is dependent on the lens type. The focal length is the distance from the lens to the image sensor and can range from 8 to 200mm.",
+    "response": "To determine the focal length of a camera, we need more specific information about the camera model or type. Different cameras have different methods to find or specify their focal length. Here are some common ways to find the focal length of a camera:\n\n1. **Digital Cameras:** If you have the specific model of the digital camera, you can usually find the focal length on the camera's manual or inside the camera'aine box. It's often listed in the specifications section.\n\n2. **Film Cameras:** The focal length for film cameras is typically printed on the lens. It may be on the front of the lens barrel or on a label on the back of the lens.\n\n3. **Lenses:** If you're trying to find the focal length of a lens, you can usually find it printed on the front of the lens barrel.\n\n4. **Manual Calculation:** If you're using a camera with interchangeable lenses and you know the sensor size of your camera, you can estimate the focal length by using the following formula:\n\n    Focal Length (mm) = (Crop Factor) x (Diagonal of the Sensor in mm)\n\n   For a full-frame camera (like the Nikon FX, Canon F, etc.), the diagonal is typically around 43.3mm.\n\nIf you can provide me with the camera model or any additional details, I can help you more specifically. Otherwise, I suggest consulting the user manual or manufacturer's website for detailed specifications.",
+    "generation_time_s": 727.58,
+    "response_token_count": 353
+  },
+  {
+    "prompt_id": "alpaca_eval_0004",
+    "instruction": "Add an unbiased reference to the given sentence.",
+    "input": "Neptune is the eighth planet from the Sun.",
+    "reference": "Neptune is the eighth planet from the Sun, according to the IAU's modern definition of a planet.",
+    "response": "According to the International Astronomical Union, Neptune is classified as the eighth planet from the Sun, based on its position in the solar system.",
+    "generation_time_s": 71.2,
+    "response_token_count": 32
+  }
+]

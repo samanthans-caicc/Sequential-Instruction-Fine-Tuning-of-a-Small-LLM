@@ -1,0 +1,47 @@
+[
+  {
+    "prompt_id": "json_extract_001",
+    "instruction": "Extract all person names and their ages from the following text and return them as a JSON array of objects with 'name' and 'age' fields.",
+    "input": "At the conference, Sarah Johnson (34) presented alongside Mike Chen (28) and Dr. Priya Patel (45).",
+    "reference": "[{\"name\": \"Sarah Johnson\", \"age\": 34}, {\"name\": \"Mike Chen\", \"age\": 28}, {\"name\": \"Priya Patel\", \"age\": 45}]",
+    "response": "```json\n\n[\n\n  { \"name\": \"Sarah Johnson\", \"age\": 34 },\n\n  { \"nameemplly\": \"Mike Chen\", \"age\": 28 },\n\n  { \"name\": \"Dr. Priya Patel\", \"age\": 45 }\n\n]\n\n```",
+    "generation_time_s": 160.49,
+    "response_token_count": 74
+  },
+  {
+    "prompt_id": "json_extract_002",
+    "instruction": "Extract the product name, price, and currency from this text. Return as a JSON object.",
+    "input": "The new Galaxy S25 Ultra is now available for $1,299.99 in the US market.",
+    "reference": "{\"product_name\": \"Galaxy S25 Ultra\", \"price\": 1299.99, \"currency\": \"USD\"}",
+    "response": "Here is the JSON object extracted from the given text:\n\n```json\n{\n  \"product_name\": \"Galaxy S25 Ultra\",\n  \"price\": 1299.99,\n  \"currency\": \"USD\"\n}\n```",
+    "generation_time_s": 132.14,
+    "response_token_count": 61
+  },
+  {
+    "prompt_id": "json_extract_003",
+    "instruction": "Extract all dates mentioned in the text and return them as a JSON array with 'event' and 'date' fields in ISO format.",
+    "input": "The project kicked off on January 15, 2025. The first milestone is due by March 30, 2025, and the final delivery is expected on August 1, 2025.",
+    "reference": "[{\"event\": \"project kickoff\", \"date\": \"2025-01-15\"}, {\"event\": \"first milestone\", \"date\": \"2025-03-30\"}, {\"event\": \"final delivery\", \"date\": \"2025-08-01\"}]",
+    "response": "```json\n\n[\n\n  {\n\n    \"event\": \"Project Kickoff\",\n\n    \"date\": \"2025-01-15\"\n\n  },\n\n  {\n\n    \"event\": \"First Milestone Due\",\n\n    \"date\": \"2025-03-30\"\n\n  },\n\n  {\n\n    \"event\": \"Final Delivery Expected\",\n\n    \"date\": \"2025-08-01\"\n\n  }\n\n]\n\n```",
+    "generation_time_s": 263.97,
+    "response_token_count": 126
+  },
+  {
+    "prompt_id": "json_extract_004",
+    "instruction": "Extract the company name, location, and industry from this paragraph. Return as a JSON object.",
+    "input": "Founded in Austin, Texas, Luminary AI has quickly become one of the leading firms in the artificial intelligence sector, specializing in healthcare applications.",
+    "reference": "{\"company_name\": \"Luminary AI\", \"location\": \"Austin, Texas\", \"industry\": \"artificial intelligence\"}",
+    "response": "{\n  \"company_name\": \"Luminary AI\",\n  \"location\": \"Austin, Texas\",\n  \"industry\": \"Artificial Intelligence in Healthcare\"\n}",
+    "generation_time_s": 100.71,
+    "response_token_count": 45
+  },
+  {
+    "prompt_id": "json_extract_005",
+    "instruction": "Extract the email addresses and associated names from this text. Return as a JSON array of objects with 'name' and 'email' fields.",
+    "input": "Please contact our team: Alice Rivera at alice.rivera@techcorp.com, Bob Tanaka at b.tanaka@techcorp.com, or the general inbox at support@techcorp.com.",
+    "reference": "[{\"name\": \"Alice Rivera\", \"email\": \"alice.rivera@techcorp.com\"}, {\"name\": \"Bob Tanaka\", \"email\": \"b.tanaka@techcorp.com\"}, {\"name\": \"general inbox\", \"email\": \"support@techcorp.com\"}]",
+    "response": "```json\n\n[\n\n  {\n\n    \"name\": \"Alice Rivera\",\n\n    \"email\": \"alice.rivera@techcorp.com\"\n\n  },\n\n  {\n\n    \"name\": \"Bob Tanaka\",\n\n    \"email\": \"b.tanaka@techcorp.com\"\n\n  },\n\n  {\n\n    \"name\": \"General Inbox\",\n\n    \"email\": \"support@techcorp.com\"\n\n  }\n\n]\n\n```",
+    "generation_time_s": 256.0,
+    "response_token_count": 121
+  }
+]

@@ -46,10 +46,7 @@ except ImportError:
     _USE_SFT_CONFIG = False
     log.info("trl.SFTConfig not available — using TrainingArguments")
 
-from trl import SFTTrainer, DataCollatorForCompletionOnlyLM
-
-# Phi-3.5 Mini completion marker — loss is only computed on tokens after this
-RESPONSE_TEMPLATE = "<|assistant|>\n"
+from trl import SFTTrainer
 
 
 # ---------------------------------------------------------------------------
@@ -109,19 +106,20 @@ def load_stage2_data():
 # Formatting
 # ---------------------------------------------------------------------------
 
-def add_text_column(example: dict) -> dict:
-    """Wrap a dataset row in the Phi-3.5 chat template for SFT."""
-    return {
-        "text": student_model.format_phi35_training_example(
-            instruction=example["instruction"],
-            output=example["output"],
-            input_text=example.get("input", ""),
+def formatting_func(examples: list[dict]) -> list[str]:
+    """
+    Format a batch of examples into full training strings (prompt + completion).
+    Loss is computed over the entire sequence — simpler and more robust than
+    using DataCollatorForCompletionOnlyLM with a response template.
+    """
+    return [
+        student_model.format_phi35_training_example(
+            instruction=ex["instruction"],
+            output=ex["output"],
+            input_text=ex.get("input", ""),
         )
-    }
-
-
-def preprocess(dataset: Dataset) -> Dataset:
-    return dataset.map(add_text_column, remove_columns=dataset.column_names)
+        for ex in examples
+    ]
 
 
 # ---------------------------------------------------------------------------
@@ -129,7 +127,7 @@ def preprocess(dataset: Dataset) -> Dataset:
 # ---------------------------------------------------------------------------
 
 def resolve_precision(stage_cfg) -> tuple[bool, bool]:
-    """Return (bf16, fp16). Falls back to fp16 on GPUs that don't support bf16 (e.g. V100)."""
+    """Return (bf16, fp16). Falls back to fp16 on GPUs without bf16 (e.g. V100)."""
     if stage_cfg.bf16 and torch.cuda.is_bf16_supported():
         return True, False
     log.info("bf16 not supported on this GPU — using fp16 instead.")
@@ -155,18 +153,18 @@ def build_training_args(stage_cfg, output_dir: str, bf16: bool, fp16: bool):
         fp16=fp16,
         save_strategy=stage_cfg.save_strategy,
         save_total_limit=stage_cfg.save_total_limit,
+        # Evaluation during training
         eval_strategy=stage_cfg.eval_strategy,
-        load_best_model_at_end=stage_cfg.load_best_model_at_end,
-        metric_for_best_model=stage_cfg.metric_for_best_model,
-        logging_steps=50,
+        # load_best_model_at_end=True is unreliable with PEFT — disabled
+        load_best_model_at_end=False,
+        logging_steps=25,
         report_to="none",
-        optim="paged_adamw_8bit",   # bitsandbytes paged optimizer for QLoRA
+        optim="paged_adamw_8bit",
     )
 
     if _USE_SFT_CONFIG:
         return _TrainingCls(
             **common,
-            dataset_text_field="text",
             max_seq_length=stage_cfg.max_seq_length,
             packing=False,
         )
@@ -193,23 +191,24 @@ def train(stage: int, output_dir: str, data_dir: str, resume_from: str | None):
         checkpoint = resume_from or cfg.stage2.resume_from_checkpoint
         log.info(f"Loading Stage 1 adapter from '{checkpoint}' for Stage 2...")
         model, tokenizer = student_model.load_student_from_checkpoint(checkpoint)
-        # Ensure adapter weights are trainable for continued fine-tuning
         model.train()
         for name, param in model.named_parameters():
             if "lora_" in name:
                 param.requires_grad = True
         model.print_trainable_parameters()
 
-    # --- Load + format data ---
+    # --- Load data ---
     train_ds, eval_ds = load_stage1_data(data_dir) if stage == 1 else load_stage2_data()
-    train_ds = preprocess(train_ds)
-    eval_ds  = preprocess(eval_ds)
+    log.info(f"Train examples: {len(train_ds):,} | Eval examples: {len(eval_ds):,}")
 
-    # --- Collator: compute loss only on completions, not prompts ---
-    collator = DataCollatorForCompletionOnlyLM(
-        response_template=RESPONSE_TEMPLATE,
-        tokenizer=tokenizer,
+    # Sanity check — log a formatted example so we can verify the template
+    sample = train_ds[0]
+    sample_text = student_model.format_phi35_training_example(
+        instruction=sample["instruction"],
+        output=sample["output"],
+        input_text=sample.get("input", ""),
     )
+    log.info(f"Sample training text (first 300 chars):\n{sample_text[:300]}")
 
     # --- Build training args ---
     training_args = build_training_args(stage_cfg, output_dir, bf16, fp16)
@@ -220,25 +219,25 @@ def train(stage: int, output_dir: str, data_dir: str, resume_from: str | None):
         args=training_args,
         train_dataset=train_ds,
         eval_dataset=eval_ds,
-        data_collator=collator,
+        formatting_func=formatting_func,
         tokenizer=tokenizer,
     )
     if not _USE_SFT_CONFIG:
-        # Old trl: pass these directly to SFTTrainer
         trainer_kwargs["max_seq_length"] = stage_cfg.max_seq_length
         trainer_kwargs["packing"] = False
-        trainer_kwargs["dataset_text_field"] = "text"
 
     trainer = SFTTrainer(**trainer_kwargs)
 
-    # --- Train ---
     log.info(
-        f"Starting Stage {stage} | epochs={stage_cfg.num_epochs} "
-        f"| lr={stage_cfg.learning_rate} | output={output_dir}"
+        f"Starting Stage {stage} training | "
+        f"epochs={stage_cfg.num_epochs} | lr={stage_cfg.learning_rate} | "
+        f"effective_batch={stage_cfg.per_device_train_batch_size * stage_cfg.gradient_accumulation_steps} | "
+        f"output={output_dir}"
     )
+    log.info(f"Total training steps: {len(trainer.get_train_dataloader()) * stage_cfg.num_epochs}")
+
     trainer.train()
 
-    # --- Save adapter + tokenizer ---
     log.info(f"Saving adapter checkpoint to '{output_dir}'...")
     trainer.save_model(output_dir)
     tokenizer.save_pretrained(output_dir)
