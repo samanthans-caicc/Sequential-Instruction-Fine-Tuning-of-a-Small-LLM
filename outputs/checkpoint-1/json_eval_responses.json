@@ -1,0 +1,902 @@
+[
+  {
+    "prompt_id": "json_extract_001",
+    "instruction": "Extract all person names and their ages from the following text and return them as a JSON array of objects with 'name' and 'age' fields.",
+    "input": "At the conference, Sarah Johnson (34) presented alongside Mike Chen (28) and Dr. Priya Patel (45).",
+    "reference": "[{\"name\": \"Sarah Johnson\", \"age\": 34}, {\"name\": \"Mike Chen\", \"age\": 28}, {\"name\": \"Priya Patel\", \"age\": 45}]",
+    "response": "[{\"name\": \"Sarah Johnson\", \"age\": 34}, {\"name\": \"Mike Chen\", \"age\": 28}, {\"name\": \"Dr. Priya Patel\", \"age\": 45}]",
+    "generation_time_s": 2.6,
+    "response_token_count": 50
+  },
+  {
+    "prompt_id": "json_extract_002",
+    "instruction": "Extract the product name, price, and currency from this text. Return as a JSON object.",
+    "input": "The new Galaxy S25 Ultra is now available for $1,299.99 in the US market.",
+    "reference": "{\"product_name\": \"Galaxy S25 Ultra\", \"price\": 1299.99, \"currency\": \"USD\"}",
+    "response": "{\n  \"product\": \"Galaxy S25 Ultra\",\n  \"price\": \"$1,299.99\",\n  \"currency\": \"USD\"\n}",
+    "generation_time_s": 2.18,
+    "response_token_count": 42
+  },
+  {
+    "prompt_id": "json_extract_003",
+    "instruction": "Extract all dates mentioned in the text and return them as a JSON array with 'event' and 'date' fields in ISO format.",
+    "input": "The project kicked off on January 15, 2025. The first milestone is due by March 30, 2025, and the final delivery is expected on August 1, 2025.",
+    "reference": "[{\"event\": \"project kickoff\", \"date\": \"2025-01-15\"}, {\"event\": \"first milestone\", \"date\": \"2025-03-30\"}, {\"event\": \"final delivery\", \"date\": \"2025-08-01\"}]",
+    "response": "[{\"event\": \"The project kicked off\", \"date\": \"2025-01-15\"}, {\"event\": \"The first milestone is due\", \"date\": \"2025-03-30\"}, {\"event\": \"The final delivery is expected\", \"date\": \"2025-08-01\"}]",
+    "generation_time_s": 3.95,
+    "response_token_count": 78
+  },
+  {
+    "prompt_id": "json_extract_004",
+    "instruction": "Extract the company name, location, and industry from this paragraph. Return as a JSON object.",
+    "input": "Founded in Austin, Texas, Luminary AI has quickly become one of the leading firms in the artificial intelligence sector, specializing in healthcare applications.",
+    "reference": "{\"company_name\": \"Luminary AI\", \"location\": \"Austin, Texas\", \"industry\": \"artificial intelligence\"}",
+    "response": "{\"company_name\": \"Luminary AI\", \"location\": \"Austin, Texas\", \"industry\": \"Artificial Intelligence\"}",
+    "generation_time_s": 1.75,
+    "response_token_count": 33
+  },
+  {
+    "prompt_id": "json_extract_005",
+    "instruction": "Extract the email addresses and associated names from this text. Return as a JSON array of objects with 'name' and 'email' fields.",
+    "input": "Please contact our team: Alice Rivera at alice.rivera@techcorp.com, Bob Tanaka at b.tanaka@techcorp.com, or the general inbox at support@techcorp.com.",
+    "reference": "[{\"name\": \"Alice Rivera\", \"email\": \"alice.rivera@techcorp.com\"}, {\"name\": \"Bob Tanaka\", \"email\": \"b.tanaka@techcorp.com\"}, {\"name\": \"general inbox\", \"email\": \"support@techcorp.com\"}]",
+    "response": "[{\"name\":\"Alice Rivera\",\"email\":\"alice.rivera@techcorp.com\"},{\"name\":\"Bob Tanaka\",\"email\":\"b.tanaka@techcorp.com\"},{\"name\":\"Support\",\"email\":\"support@techcorp.com\"}]",
+    "generation_time_s": 3.04,
+    "response_token_count": 59
+  },
+  {
+    "prompt_id": "json_extract_006",
+    "instruction": "Extract the restaurant name, cuisine type, and rating from the following review. Return as a JSON object.",
+    "input": "We had an amazing dinner at Sakura Garden last night. Their Japanese fusion dishes were outstanding, and I would easily give them a 4.5 out of 5.",
+    "reference": "{\"restaurant_name\": \"Sakura Garden\", \"cuisine_type\": \"Japanese fusion\", \"rating\": 4.5}",
+    "response": "{\"restaurant\": \"Sakura Garden\", \"cuisine\": \"Japanese Fusion\", \"rating\": \"4.5\"}",
+    "generation_time_s": 1.68,
+    "response_token_count": 31
+  },
+  {
+    "prompt_id": "json_extract_007",
+    "instruction": "Extract all programming languages mentioned and whether they are described positively or negatively. Return as a JSON array of objects with 'language' and 'sentiment' fields.",
+    "input": "Python remains the most beginner-friendly language, and Rust is praised for its memory safety. However, many developers find C++ overly complex, and PHP continues to receive criticism for its inconsistencies.",
+    "reference": "[{\"language\": \"Python\", \"sentiment\": \"positive\"}, {\"language\": \"Rust\", \"sentiment\": \"positive\"}, {\"language\": \"C++\", \"sentiment\": \"negative\"}, {\"language\": \"PHP\", \"sentiment\": \"negative\"}]",
+    "response": "[{\"language\":\"Python\",\"sentiment\":\"positive\"},{\"language\":\"Rust\",\"sentiment\":\"positive\"},{\"language\":\"C++\",\"sentiment\":\"negative\"},{\"language\":\"PHP\",\"sentiment\":\"negative\"}]",
+    "generation_time_s": 2.4,
+    "response_token_count": 46
+  },
+  {
+    "prompt_id": "json_extract_008",
+    "instruction": "Extract the flight information from this text: departure city, arrival city, airline, and flight number. Return as a JSON object.",
+    "input": "Your booking is confirmed: United Airlines flight UA 847 departing from San Francisco to Tokyo Narita.",
+    "reference": "{\"departure_city\": \"San Francisco\", \"arrival_city\": \"Tokyo Narita\", \"airline\": \"United Airlines\", \"flight_number\": \"UA 847\"}",
+    "response": "{\n\"departure_city\": \"San Francisco\",\n\"arrival_city\": \"Tokyo Narita\",\n\"airline\": \"United Airlines\",\n\"flight_number\": \"UA 847\"\n}",
+    "generation_time_s": 2.76,
+    "response_token_count": 54
+  },
+  {
+    "prompt_id": "json_extract_009",
+    "instruction": "Extract the book title, author, and publication year from this text. Return as a JSON object.",
+    "input": "In her 2022 bestseller 'The Light We Carry', Michelle Obama explores themes of resilience and personal growth drawn from her own life experiences.",
+    "reference": "{\"title\": \"The Light We Carry\", \"author\": \"Michelle Obama\", \"publication_year\": 2022}",
+    "response": "{\n  \"book\": \"The Light We Carry\",\n  \"author\": \"Michelle Obama\",\n  \"year\": 2022\n}",
+    "generation_time_s": 1.92,
+    "response_token_count": 36
+  },
+  {
+    "prompt_id": "json_extract_010",
+    "instruction": "Extract all medications and their dosages from this clinical note. Return as a JSON array of objects with 'medication' and 'dosage' fields.",
+    "input": "Patient is currently taking Metformin 500mg twice daily, Lisinopril 10mg once daily, and Atorvastatin 20mg at bedtime.",
+    "reference": "[{\"medication\": \"Metformin\", \"dosage\": \"500mg twice daily\"}, {\"medication\": \"Lisinopril\", \"dosage\": \"10mg once daily\"}, {\"medication\": \"Atorvastatin\", \"dosage\": \"20mg at bedtime\"}]",
+    "response": "[{ \"medication\": \"Metformin\", \"dosage\": \"500mg twice daily\"}, { \"medication\": \"Lisinopril\", \"dosage\": \"10mg once daily\"}, { \"medication\": \"Atorvastatin\", \"dosage\": \"20mg at bedtime\"}]",
+    "generation_time_s": 4.0,
+    "response_token_count": 79
+  },
+  {
+    "prompt_id": "json_extract_011",
+    "instruction": "Extract the job title, company, and required years of experience from this job posting. Return as a JSON object.",
+    "input": "We are hiring a Senior Machine Learning Engineer at DataBridge Inc. Candidates must have at least 5 years of experience in ML/AI.",
+    "reference": "{\"job_title\": \"Senior Machine Learning Engineer\", \"company\": \"DataBridge Inc.\", \"years_experience\": 5}",
+    "response": "{\"job_title\": \"Senior Machine Learning Engineer\", \"company\": \"DataBridge Inc.\", \"required_years_of_experience\": \"5\"}",
+    "generation_time_s": 1.98,
+    "response_token_count": 38
+  },
+  {
+    "prompt_id": "json_extract_012",
+    "instruction": "Extract the stock ticker symbols and their percentage changes from this text. Return as a JSON array of objects with 'ticker' and 'change_percent' fields.",
+    "input": "Today's movers: AAPL rose 2.3%, TSLA dropped 4.1%, and NVDA gained 1.8% in afternoon trading.",
+    "reference": "[{\"ticker\": \"AAPL\", \"change_percent\": 2.3}, {\"ticker\": \"TSLA\", \"change_percent\": -4.1}, {\"ticker\": \"NVDA\", \"change_percent\": 1.8}]",
+    "response": "[{ticker: \"AAPL\", change_percent: 2.3}, {ticker: \"TSLA\", change_percent: -4.1}, {ticker: \"NVDA\", change_percent: 1.8}]",
+    "generation_time_s": 2.74,
+    "response_token_count": 53
+  },
+  {
+    "prompt_id": "json_extract_013",
+    "instruction": "Extract the ingredients and their quantities from this recipe snippet. Return as a JSON array of objects with 'ingredient' and 'quantity' fields.",
+    "input": "For the sauce you will need 2 cups of crushed tomatoes, 3 cloves of garlic, 1 tablespoon of olive oil, and a pinch of salt.",
+    "reference": "[{\"ingredient\": \"crushed tomatoes\", \"quantity\": \"2 cups\"}, {\"ingredient\": \"garlic\", \"quantity\": \"3 cloves\"}, {\"ingredient\": \"olive oil\", \"quantity\": \"1 tablespoon\"}, {\"ingredient\": \"salt\", \"quantity\": \"a pinch\"}]",
+    "response": "[{ \"ingredient\": \"crushed tomatoes\", \"quantity\": \"2 cups\" }, { \"ingredient\": \"garlic\", \"quantity\": \"3 cloves\" }, { \"ingredient\": \"olive oil\", \"quantity\": \"1 tablespoon\" }, { \"ingredient\": \"salt\", \"quantity\": \"a pinch\" }]",
+    "generation_time_s": 4.09,
+    "response_token_count": 81
+  },
+  {
+    "prompt_id": "json_extract_014",
+    "instruction": "Extract the university name, degree type, and field of study from this text. Return as a JSON object.",
+    "input": "She completed her Master of Science in Computer Engineering at Georgia Institute of Technology in 2023.",
+    "reference": "{\"university\": \"Georgia Institute of Technology\", \"degree_type\": \"Master of Science\", \"field_of_study\": \"Computer Engineering\"}",
+    "response": "{\"university\": \"Georgia Institute of Technology\", \"degree\": \"Master of Science\", \"field\": \"Computer Engineering\"}",
+    "generation_time_s": 1.55,
+    "response_token_count": 29
+  },
+  {
+    "prompt_id": "json_extract_015",
+    "instruction": "Extract the country, capital, and population mentioned in this text. Return as a JSON object.",
+    "input": "Norway, with its capital Oslo, has a population of approximately 5.5 million people and is known for its fjords.",
+    "reference": "{\"country\": \"Norway\", \"capital\": \"Oslo\", \"population\": \"5.5 million\"}",
+    "response": "{\"country\": \"Norway\", \"capital\": \"Oslo\", \"population\": \"5.5 million\"}",
+    "generation_time_s": 1.4,
+    "response_token_count": 26
+  },
+  {
+    "prompt_id": "json_extract_016",
+    "instruction": "Extract the error code, error message, and affected service from this log entry. Return as a JSON object.",
+    "input": "[2025-03-15 14:22:01] ERROR 503: Service Unavailable \u2014 the authentication-service failed to respond within the 30s timeout window.",
+    "reference": "{\"error_code\": 503, \"error_message\": \"Service Unavailable\", \"affected_service\": \"authentication-service\"}",
+    "response": "{\"error_code\": 503, \"error_message\": \"Service Unavailable\", \"affected_service\": \"authentication-service\"}",
+    "generation_time_s": 1.68,
+    "response_token_count": 31
+  },
+  {
+    "prompt_id": "json_extract_017",
+    "instruction": "Extract the movie title, director, and genre from this text. Return as a JSON object.",
+    "input": "Christopher Nolan's science fiction epic 'Interstellar' continues to captivate audiences a decade after its release.",
+    "reference": "{\"movie_title\": \"Interstellar\", \"director\": \"Christopher Nolan\", \"genre\": \"science fiction\"}",
+    "response": "{\"title\":\"Interstellar\",\"director\":\"Christopher Nolan\",\"genre\":\"Science fiction\"}",
+    "generation_time_s": 1.21,
+    "response_token_count": 22
+  },
+  {
+    "prompt_id": "json_extract_018",
+    "instruction": "Extract all physical measurements from this product description. Return as a JSON object with 'width', 'height', 'depth', and 'weight' fields.",
+    "input": "The monitor measures 24.5 inches wide, 14.8 inches tall, and 2.1 inches deep, weighing just 8.4 pounds.",
+    "reference": "{\"width\": \"24.5 inches\", \"height\": \"14.8 inches\", \"depth\": \"2.1 inches\", \"weight\": \"8.4 pounds\"}",
+    "response": "{\n\n \"width\": \"24.5 inches\",\n\n \"height\": \"14.8 inches\",\n\n \"depth\": \"2.1 inches\",\n\n \"weight\": \"8.4 pounds\"\n\n}",
+    "generation_time_s": 2.59,
+    "response_token_count": 50
+  },
+  {
+    "prompt_id": "json_extract_019",
+    "instruction": "Extract the event name, date, and venue from this announcement. Return as a JSON object.",
+    "input": "Join us for the Annual AI Research Summit on September 12, 2025 at the San Jose Convention Center.",
+    "reference": "{\"event_name\": \"Annual AI Research Summit\", \"date\": \"2025-09-12\", \"venue\": \"San Jose Convention Center\"}",
+    "response": "{\n  \"event\": \"Annual AI Research Summit\",\n  \"date\": \"September 12, 2025\",\n  \"venue\": \"San Jose Convention Center\"\n}",
+    "generation_time_s": 2.42,
+    "response_token_count": 47
+  },
+  {
+    "prompt_id": "json_extract_020",
+    "instruction": "Extract the athlete name, sport, and achievement from this text. Return as a JSON object.",
+    "input": "Swimmer Katie Ledecky broke the world record in the 1500m freestyle with a time of 15:20.48 at the World Championships.",
+    "reference": "{\"athlete_name\": \"Katie Ledecky\", \"sport\": \"swimming\", \"achievement\": \"world record in 1500m freestyle\", \"time\": \"15:20.48\"}",
+    "response": "{ \"athlete\": \"Katie Ledecky\", \"sport\": \"swimming\", \"achievement\": \"broke the world record in the 1500m freestyle with a time of 15:20.48 at the World Championships\" }",
+    "generation_time_s": 3.17,
+    "response_token_count": 62
+  },
+  {
+    "prompt_id": "schema_gen_001",
+    "instruction": "Generate a valid JSON object representing a user profile that conforms to this schema: {name: string, email: string, age: integer, is_active: boolean, roles: array of strings}.",
+    "input": "",
+    "reference": "{\"name\": \"Jordan Lee\", \"email\": \"jordan.lee@example.com\", \"age\": 29, \"is_active\": true, \"roles\": [\"developer\", \"reviewer\"]}",
+    "response": "{name: \"John Doe\", email: \"john.doe@example.com\", age: 25, is_active: true, roles: [\"user\", \"admin\"]}",
+    "generation_time_s": 2.18,
+    "response_token_count": 42
+  },
+  {
+    "prompt_id": "schema_gen_002",
+    "instruction": "Generate a JSON object representing a weather forecast that matches this schema: {city: string, date: string (ISO format), temperature_high: number, temperature_low: number, conditions: string, humidity_percent: integer}.",
+    "input": "",
+    "reference": "{\"city\": \"Denver\", \"date\": \"2025-04-10\", \"temperature_high\": 72.5, \"temperature_low\": 48.0, \"conditions\": \"partly cloudy\", \"humidity_percent\": 35}",
+    "response": "{\n\n    \"city\": \"New York\",\n\n    \"date\": \"2022-05-19\",\n\n    \"temperature_high\": 85,\n\n    \"temperature_low\": 70,\n\n    \"conditions\": \"partly cloudy\",\n\n    \"humidity_percent\": 50\n\n}",
+    "generation_time_s": 4.2,
+    "response_token_count": 84
+  },
+  {
+    "prompt_id": "schema_gen_003",
+    "instruction": "Generate a JSON object for a library book record with this schema: {title: string, author: string, isbn: string, published_year: integer, available: boolean, genres: array of strings}.",
+    "input": "",
+    "reference": "{\"title\": \"The Midnight Library\", \"author\": \"Matt Haig\", \"isbn\": \"978-0525559474\", \"published_year\": 2020, \"available\": true, \"genres\": [\"fiction\", \"fantasy\"]}",
+    "response": "{\n \"title\": \"The Hidden Life of Trees\",\n \"author\": \"Jane Doe\",\n \"isbn\": \"978-0-399-23535-0\",\n \"published_year\": 2018,\n \"available\": true,\n \"genres\": [\"Ecology\", \"Nature\", \"Biology\"]\n}",
+    "generation_time_s": 4.35,
+    "response_token_count": 87
+  },
+  {
+    "prompt_id": "schema_gen_004",
+    "instruction": "Generate a JSON object for an e-commerce order conforming to this schema: {order_id: string, customer_name: string, items: array of {product: string, quantity: integer, price: number}, total: number, status: string}.",
+    "input": "",
+    "reference": "{\"order_id\": \"ORD-20250328-001\", \"customer_name\": \"Emily Watson\", \"items\": [{\"product\": \"Wireless Mouse\", \"quantity\": 1, \"price\": 29.99}, {\"product\": \"USB-C Hub\", \"quantity\": 2, \"price\": 45.00}], \"total\": 119.99, \"status\": \"shipped\"}",
+    "response": "{\n \"order_id\": \"12345\",\n \"customer_name\": \"John Smith\",\n \"items\": [\n  {\n   \"product\": \"Book\",\n   \"quantity\": 2,\n   \"price\": 12.99\n  },\n  {\n   \"product\": \"Pencil\",\n   \"quantity\": 5,\n   \"price\": 0.99\n  }\n ],\n \"total\": 31.95,\n \"status\": \"Pending\"\n}",
+    "generation_time_s": 5.9,
+    "response_token_count": 119
+  },
+  {
+    "prompt_id": "schema_gen_005",
+    "instruction": "Generate a JSON object for a movie entry matching this schema: {title: string, year: integer, director: string, rating: number (0-10), genres: array of strings, runtime_minutes: integer}.",
+    "input": "",
+    "reference": "{\"title\": \"Dune: Part Two\", \"year\": 2024, \"director\": \"Denis Villeneuve\", \"rating\": 8.6, \"genres\": [\"sci-fi\", \"adventure\", \"drama\"], \"runtime_minutes\": 166}",
+    "response": "{\n\n\"title\": \"The Great Escape\",\n\n\"year\": 1963,\n\n\"director\": \"John Sturges\",\n\n\"rating\": 7.6,\n\n\"genres\": [\"Action\", \"Adventure\", \"War\"],\n\n\"runtime_minutes\": 108 }",
+    "generation_time_s": 3.82,
+    "response_token_count": 76
+  },
+  {
+    "prompt_id": "schema_gen_006",
+    "instruction": "Generate a JSON object for a server health check response with this schema: {server_id: string, status: string (one of: healthy, degraded, down), uptime_hours: number, cpu_usage_percent: number, memory_usage_percent: number, last_checked: string (ISO datetime)}.",
+    "input": "",
+    "reference": "{\"server_id\": \"srv-us-east-042\", \"status\": \"healthy\", \"uptime_hours\": 720.5, \"cpu_usage_percent\": 34.2, \"memory_usage_percent\": 61.8, \"last_checked\": \"2025-03-28T14:30:00Z\"}",
+    "response": "{\n  \"server_id\": \"s001\",\n  \"status\": \"healthy\",\n  \"uptime_hours\": 24,\n  \"cpu_usage_percent\": 60,\n  \"memory_usage_percent\": 30,\n  \"last_checked\": \"2021-01-01T00:00:00Z\"\n}",
+    "generation_time_s": 4.72,
+    "response_token_count": 94
+  },
+  {
+    "prompt_id": "schema_gen_007",
+    "instruction": "Generate a JSON object for a recipe matching this schema: {name: string, servings: integer, prep_time_minutes: integer, cook_time_minutes: integer, ingredients: array of {item: string, amount: string}, difficulty: string}.",
+    "input": "",
+    "reference": "{\"name\": \"Garlic Butter Shrimp Pasta\", \"servings\": 4, \"prep_time_minutes\": 15, \"cook_time_minutes\": 20, \"ingredients\": [{\"item\": \"linguine\", \"amount\": \"400g\"}, {\"item\": \"shrimp\", \"amount\": \"500g\"}, {\"item\": \"garlic\", \"amount\": \"6 cloves\"}, {\"item\": \"butter\", \"amount\": \"3 tbsp\"}], \"difficulty\": \"easy\"}",
+    "response": "{name: \"Chicken Alfredo\", servings: 4, prep_time_minutes: 15, cook_time_minutes: 30, ingredients: [{item: \"Chicken Breast\", amount: \"2\"}, {item: \"Butter\", amount: \"2 tablespoons\"}, {item: \"Flour\", amount: \"2 tablespoons\"}, {itemnm: \"Milk\", amount: \"2 cups\"}, {item: \"Parmesan Cheese\", amount: \"1 cup\"}, {item: \"Garlic\", amount: \"2 cloves\"}, {item: \"Parsley\", amount: \"1 tablespoon\"}], difficulty: \"easy\"}",
+    "generation_time_s": 7.57,
+    "response_token_count": 154
+  },
+  {
+    "prompt_id": "schema_gen_008",
+    "instruction": "Generate a JSON object for a student transcript record with this schema: {student_id: string, name: string, gpa: number, courses: array of {course_name: string, grade: string, credits: integer}, total_credits: integer}.",
+    "input": "",
+    "reference": "{\"student_id\": \"STU-2025-0483\", \"name\": \"Aisha Patel\", \"gpa\": 3.72, \"courses\": [{\"course_name\": \"Machine Learning\", \"grade\": \"A\", \"credits\": 3}, {\"course_name\": \"Linear Algebra\", \"grade\": \"A-\", \"credits\": 3}, {\"course_name\": \"Data Structures\", \"grade\": \"B+\", \"credits\": 4}], \"total_credits\": 10}",
+    "response": "{\n \"student_id\": \"1234\",\n \"name\": \"John Smith\",\n \"gpa\": 3.5,\n \"courses\": [\n   {\n     \"course_name\": \"Math\",\n     \"grade\": \"A\",\n     \"credits\": 3\n   },\n   {\n     \"course_name\": \"Science\",\n \"grade\": \"B\",\n \"credits\": 3\n   },\n   {\n     \"course_name\": \"English\",\n     \"grade\": \"A\",\n     \"credits\": 2\n   }\n ],\n \"total_credits\": 8\n}",
+    "generation_time_s": 7.15,
+    "response_token_count": 145
+  },
+  {
+    "prompt_id": "schema_gen_009",
+    "instruction": "Generate a JSON object for a conference talk submission matching this schema: {talk_id: string, title: string, speaker: string, abstract: string, duration_minutes: integer, track: string, tags: array of strings}.",
+    "input": "",
+    "reference": "{\"talk_id\": \"TALK-2025-117\", \"title\": \"Scaling LLMs for Low-Resource Languages\", \"speaker\": \"Dr. Fatima Al-Rashid\", \"abstract\": \"This talk explores efficient fine-tuning strategies for adapting large language models to underserved language communities.\", \"duration_minutes\": 30, \"track\": \"NLP\", \"tags\": [\"multilingual\", \"fine-tuning\", \"low-resource\"]}",
+    "response": "{\n\"talk_id\": \"00001\",\n\"title\": \"Innovative AI Technologies\",\n\"speaker\": \"Dr. John Smith\",\n\"abstract\": \"This talk will cover the latest developments in artificial intelligence and how they can be used to improve business processes.\",\n\"duration_minutes\": 15,\n\"track\": \"Machine Learning\",\n\"tags\": [\"AI\", \"ML\", \"Innovation\"]\n}",
+    "generation_time_s": 5.07,
+    "response_token_count": 102
+  },
+  {
+    "prompt_id": "schema_gen_010",
+    "instruction": "Generate a JSON object for a vehicle listing matching this schema: {make: string, model: string, year: integer, mileage: integer, price: number, fuel_type: string, features: array of strings}.",
+    "input": "",
+    "reference": "{\"make\": \"Toyota\", \"model\": \"Camry\", \"year\": 2023, \"mileage\": 18500, \"price\": 27450.00, \"fuel_type\": \"hybrid\", \"features\": [\"adaptive cruise control\", \"lane assist\", \"heated seats\", \"backup camera\"]}",
+    "response": "{\n\"make\": \"Toyota\",\n\"model\": \"Camry\",\n\"year\": 2018,\n\"mileage\": 50000,\n\"price\": 25000,\n\"fuel_type\": \"Petrol\",\n\"features\": [\"Automatic Transmission\", \"Air Conditioning\", \"Power Windows\", \"Cruise Control\"]\n}",
+    "generation_time_s": 4.59,
+    "response_token_count": 92
+  },
+  {
+    "prompt_id": "schema_gen_011",
+    "instruction": "Generate a JSON object for an API error response matching this schema: {error: {code: integer, message: string, type: string}, request_id: string, timestamp: string (ISO datetime)}.",
+    "input": "",
+    "reference": "{\"error\": {\"code\": 429, \"message\": \"Rate limit exceeded. Please retry after 60 seconds.\", \"type\": \"rate_limit_error\"}, \"request_id\": \"req_abc123def456\", \"timestamp\": \"2025-03-28T16:45:12Z\"}",
+    "response": "{\n \"error\": {\n  \"code\": 404,\n  \"message\": \"Resource not found\",\n  \"type\": \"Not Found\"\n },\n \"request_id\": \"123456\",\n \"timestamp\": \"2021-08-22T11:32:12.502Z\"\n}",
+    "generation_time_s": 4.16,
+    "response_token_count": 83
+  },
+  {
+    "prompt_id": "schema_gen_012",
+    "instruction": "Generate a JSON object for a fitness workout log matching this schema: {date: string, workout_type: string, duration_minutes: integer, exercises: array of {name: string, sets: integer, reps: integer, weight_lbs: number}, calories_burned: integer}.",
+    "input": "",
+    "reference": "{\"date\": \"2025-03-28\", \"workout_type\": \"strength\", \"duration_minutes\": 55, \"exercises\": [{\"name\": \"bench press\", \"sets\": 4, \"reps\": 8, \"weight_lbs\": 185}, {\"name\": \"squat\", \"sets\": 4, \"reps\": 6, \"weight_lbs\": 225}, {\"name\": \"deadlift\", \"sets\": 3, \"reps\": 5, \"weight_lbs\": 275}], \"calories_burned\": 420}",
+    "response": "{date: \"2021-03-01\", workout_type: \"cardio\", duration_minutes: 30, exercises: [{name: \"running\", sets: 1, reps: 1, weight_lbs: 0}, {name: \"jump rope\", sets: 3, reps: 50, weight_lbs: 0}], calories_burned: 200}",
+    "generation_time_s": 5.15,
+    "response_token_count": 103
+  },
+  {
+    "prompt_id": "schema_gen_013",
+    "instruction": "Generate a JSON object for a podcast episode matching this schema: {episode_number: integer, title: string, host: string, guest: string, duration_minutes: integer, topics: array of strings, published_date: string}.",
+    "input": "",
+    "reference": "{\"episode_number\": 142, \"title\": \"The Future of Open Source AI\", \"host\": \"Maria Santos\", \"guest\": \"Dr. Kevin Wu\", \"duration_minutes\": 58, \"topics\": [\"open source\", \"model licensing\", \"community governance\"], \"published_date\": \"2025-03-20\"}",
+    "response": "{episode_number: 1, title: \"The Future of AI\", host: \"John Smith\", guest: \"Jane Doe\", duration_minutes: 30, topics: [\"Artificial Intelligence\", \"Machine Learning\", \"The Future of Technology\"], published_date: \"2021-08-01\"}",
+    "generation_time_s": 3.87,
+    "response_token_count": 77
+  },
+  {
+    "prompt_id": "schema_gen_014",
+    "instruction": "Generate a JSON object for a hotel reservation matching this schema: {reservation_id: string, guest_name: string, check_in: string, check_out: string, room_type: string, nightly_rate: number, total_nights: integer}.",
+    "input": "",
+    "reference": "{\"reservation_id\": \"RES-78432\", \"guest_name\": \"Carlos Mendez\", \"check_in\": \"2025-06-15\", \"check_out\": \"2025-06-18\", \"room_type\": \"king suite\", \"nightly_rate\": 189.00, \"total_nights\": 3}",
+    "response": "{\n \"reservation_id\": \"123456789\",\n \"guest_name\": \"John Doe\",\n \"check_in\": \"2021-09-01\",\n \"check_out\": \"2021-09-05\",\n \"room_type\": \"Deluxe Suite\",\n \"nightly_rate\": 200.00,\n \"total_nights\": 4 }",
+    "generation_time_s": 5.22,
+    "response_token_count": 105
+  },
+  {
+    "prompt_id": "schema_gen_015",
+    "instruction": "Generate a JSON object for a GitHub issue matching this schema: {issue_number: integer, title: string, author: string, labels: array of strings, state: string, created_at: string, assignees: array of strings}.",
+    "input": "",
+    "reference": "{\"issue_number\": 347, \"title\": \"Fix memory leak in batch inference pipeline\", \"author\": \"devops-sarah\", \"labels\": [\"bug\", \"high-priority\", \"performance\"], \"state\": \"open\", \"created_at\": \"2025-03-25T09:14:00Z\", \"assignees\": [\"ml-engineer-bob\", \"devops-sarah\"]}",
+    "response": "{\n  \"issue_number\": 123,\n  \"title\": \"Fix the login button\",\n  \"author\": \"john doe\",\n  \"labels\": [\"bug\", \"ui\", \"frontend\"],\n  \"state\": \"open\",\n  \"created_at\": \"2020-03-01T10:00:00Z\",\n  \"assignees\": [\"jane doe\"]\n}",
+    "generation_time_s": 5.12,
+    "response_token_count": 103
+  },
+  {
+    "prompt_id": "schema_gen_016",
+    "instruction": "Generate a JSON object for an employee record matching this schema: {employee_id: string, first_name: string, last_name: string, department: string, title: string, start_date: string, salary: number, is_remote: boolean}.",
+    "input": "",
+    "reference": "{\"employee_id\": \"EMP-10234\", \"first_name\": \"Tomoko\", \"last_name\": \"Hayashi\", \"department\": \"Engineering\", \"title\": \"Staff Software Engineer\", \"start_date\": \"2021-08-16\", \"salary\": 165000.00, \"is_remote\": true}",
+    "response": "{ \"employee_id\": \"12345\", \"first_name\": \"John\", \"last_name\": \"Doe\", \"department\": \"IT\", \"title\": \"Software Engineer\", \"start_date\": \"2021-02-21\", \"salary\": 80000, \"is_remote\": true }",
+    "generation_time_s": 4.06,
+    "response_token_count": 81
+  },
+  {
+    "prompt_id": "schema_gen_017",
+    "instruction": "Generate a JSON object for a music album matching this schema: {title: string, artist: string, release_year: integer, genre: string, tracks: integer, duration_minutes: integer, label: string}.",
+    "input": "",
+    "reference": "{\"title\": \"Midnight Frequencies\", \"artist\": \"Luna Park\", \"release_year\": 2025, \"genre\": \"electronic\", \"tracks\": 12, \"duration_minutes\": 48, \"label\": \"Warp Records\"}",
+    "response": "{ \"title\": \"Nevermind\", \"artist\": \"Nirvana\", \"release_year\": 1991, \"genre\": \"Grunge\", \"tracks\": 11, \"duration_minutes\": 53, \"label\": \"DGC\" }",
+    "generation_time_s": 3.24,
+    "response_token_count": 64
+  },
+  {
+    "prompt_id": "schema_gen_018",
+    "instruction": "Generate a JSON object for a shipping package matching this schema: {tracking_number: string, carrier: string, origin: string, destination: string, weight_kg: number, status: string, estimated_delivery: string}.",
+    "input": "",
+    "reference": "{\"tracking_number\": \"1Z999AA10123456784\", \"carrier\": \"UPS\", \"origin\": \"Los Angeles, CA\", \"destination\": \"New York, NY\", \"weight_kg\": 2.3, \"status\": \"in transit\", \"estimated_delivery\": \"2025-04-01\"}",
+    "response": "{\n\n    \"tracking_number\": \"123456789\",\n\n    \"carrier\": \"UPS\",\n\n    \"origin\": \"New York, NY\",\n\n    \"destination\": \"Los Angeles, CA\",\n\n    \"weight_kg\": 20,\n\n    \"status\": \"In Transit\",\n\n    \"estimated_delivery\": \"2021-06-20\"\n\n}",
+    "generation_time_s": 5.23,
+    "response_token_count": 105
+  },
+  {
+    "prompt_id": "schema_gen_019",
+    "instruction": "Generate a JSON object for a survey response matching this schema: {respondent_id: string, survey_id: string, responses: array of {question_id: string, answer: string}, submitted_at: string, completion_time_seconds: integer}.",
+    "input": "",
+    "reference": "{\"respondent_id\": \"R-55891\", \"survey_id\": \"SRV-2025-Q1\", \"responses\": [{\"question_id\": \"Q1\", \"answer\": \"Very satisfied\"}, {\"question_id\": \"Q2\", \"answer\": \"Product quality\"}, {\"question_id\": \"Q3\", \"answer\": \"Yes, I would recommend\"}], \"submitted_at\": \"2025-03-28T11:22:00Z\", \"completion_time_seconds\": 145}",
+    "response": "{\n  \"respondent_id\": \"123456\",\n  \"survey_id\": \"12345\",\n  \"responses\": [\n    {\n      \"question_id\": \"1\",\n      \"answer\": \"Yes\"\n    },\n    {\n      \"question_id\": \"2\",\n      \"answer\": \"No\"\n    },\n    {\n      \"question_id\": \"3\",\n      \"answer\": \"Maybe\"\n    }\n  ],\n  \"submitted_at\": \"2020-10-15T11:00:00.000Z\",\n  \"completion_time_seconds\": 5\n}",
+    "generation_time_s": 8.02,
+    "response_token_count": 163
+  },
+  {
+    "prompt_id": "schema_gen_020",
+    "instruction": "Generate a JSON object for a cloud VM instance matching this schema: {instance_id: string, region: string, instance_type: string, vcpus: integer, memory_gb: integer, storage_gb: integer, state: string, launched_at: string}.",
+    "input": "",
+    "reference": "{\"instance_id\": \"i-0a1b2c3d4e5f60789\", \"region\": \"us-west-2\", \"instance_type\": \"m5.xlarge\", \"vcpus\": 4, \"memory_gb\": 16, \"storage_gb\": 100, \"state\": \"running\", \"launched_at\": \"2025-03-27T08:00:00Z\"}",
+    "response": "{\n  \"instance_id\": \"instance-1234\",\n  \"region\": \"us-west-2\",\n  \"instance_type\": \"t2.micro\",\n  \"vcpus\": 2,\n  \"memory_gb\": 1,\n  \"storage_gb\": 20,\n  \"state\": \"running\",\n  \"launched_at\": \"2021-01-01T00:00:00Z\"\n}",
+    "generation_time_s": 5.61,
+    "response_token_count": 113
+  },
+  {
+    "prompt_id": "classify_001",
+    "instruction": "Classify the sentiment of this product review as one of: positive, negative, or neutral. Return your answer as a JSON object with a 'label' field.",
+    "input": "This laptop exceeded my expectations. The battery lasts all day and the display is gorgeous.",
+    "reference": "{\"label\": \"positive\"}",
+    "response": "{\n \"label\": \"positive\"\n}",
+    "generation_time_s": 0.68,
+    "response_token_count": 11
+  },
+  {
+    "prompt_id": "classify_002",
+    "instruction": "Classify the sentiment of this product review as one of: positive, negative, or neutral. Return your answer as a JSON object with a 'label' field.",
+    "input": "The build quality is terrible. The screen cracked within a week and customer service was unhelpful.",
+    "reference": "{\"label\": \"negative\"}",
+    "response": "{ \"label\": \"negative\" }",
+    "generation_time_s": 0.53,
+    "response_token_count": 8
+  },
+  {
+    "prompt_id": "classify_003",
+    "instruction": "Classify the sentiment of this product review as one of: positive, negative, or neutral. Return your answer as a JSON object with a 'label' field.",
+    "input": "It works as described. Nothing special but gets the job done for the price.",
+    "reference": "{\"label\": \"neutral\"}",
+    "response": "{\"label\": \"neutral\"}",
+    "generation_time_s": 0.49,
+    "response_token_count": 7
+  },
+  {
+    "prompt_id": "classify_004",
+    "instruction": "Classify this email as one of: spam, promotional, transactional, or personal. Return as a JSON object with a 'category' field.",
+    "input": "Congratulations! You've been selected to win a $1000 gift card! Click here to claim your prize NOW before it expires!!!",
+    "reference": "{\"category\": \"spam\"}",
+    "response": "{\n\n  \"category\": \"promotional\"\n\n}",
+    "generation_time_s": 0.9,
+    "response_token_count": 15
+  },
+  {
+    "prompt_id": "classify_005",
+    "instruction": "Classify this email as one of: spam, promotional, transactional, or personal. Return as a JSON object with a 'category' field.",
+    "input": "Your order #4829 has been shipped via FedEx. Tracking number: 7891234567. Estimated delivery: April 2.",
+    "reference": "{\"category\": \"transactional\"}",
+    "response": "{\"category\": \"transactional\"}",
+    "generation_time_s": 0.52,
+    "response_token_count": 7
+  },
+  {
+    "prompt_id": "classify_006",
+    "instruction": "Classify the urgency of this support ticket as one of: low, medium, high, or critical. Return as a JSON object with a 'urgency' field.",
+    "input": "Our entire production database is down and no customers can access the platform. We need immediate assistance.",
+    "reference": "{\"urgency\": \"critical\"}",
+    "response": "{\n\n  \"urgency\": \"critical\"\n\n}",
+    "generation_time_s": 0.87,
+    "response_token_count": 15
+  },
+  {
+    "prompt_id": "classify_007",
+    "instruction": "Classify the urgency of this support ticket as one of: low, medium, high, or critical. Return as a JSON object with a 'urgency' field.",
+    "input": "Would it be possible to change the font size in the dashboard? It's a bit small for my preference.",
+    "reference": "{\"urgency\": \"low\"}",
+    "response": "{\n  \"urgency\": \"low\"\n}",
+    "generation_time_s": 0.76,
+    "response_token_count": 12
+  },
+  {
+    "prompt_id": "classify_008",
+    "instruction": "Classify this news headline into one of: politics, technology, sports, entertainment, science, or business. Return as a JSON object with a 'topic' field.",
+    "input": "Federal Reserve Holds Interest Rates Steady Amid Inflation Concerns",
+    "reference": "{\"topic\": \"business\"}",
+    "response": "{\"topic\": \"business\"}",
+    "generation_time_s": 0.49,
+    "response_token_count": 7
+  },
+  {
+    "prompt_id": "classify_009",
+    "instruction": "Classify this news headline into one of: politics, technology, sports, entertainment, science, or business. Return as a JSON object with a 'topic' field.",
+    "input": "NASA's James Webb Telescope Discovers New Exoplanet With Earth-Like Atmosphere",
+    "reference": "{\"topic\": \"science\"}",
+    "response": "{\"topic\": \"science\"}",
+    "generation_time_s": 0.52,
+    "response_token_count": 7
+  },
+  {
+    "prompt_id": "classify_010",
+    "instruction": "Classify this customer feedback into one of: bug_report, feature_request, praise, or complaint. Return as a JSON object with a 'type' field.",
+    "input": "It would be amazing if you could add dark mode to the mobile app. I use it at night and the white screen is too bright.",
+    "reference": "{\"type\": \"feature_request\"}",
+    "response": "{\n  \"type\": \"feature_request\"\n}",
+    "generation_time_s": 0.81,
+    "response_token_count": 13
+  },
+  {
+    "prompt_id": "classify_011",
+    "instruction": "Classify this customer feedback into one of: bug_report, feature_request, praise, or complaint. Return as a JSON object with a 'type' field.",
+    "input": "When I click the export button, the app crashes every time. I'm on version 3.2.1 running iOS 18.",
+    "reference": "{\"type\": \"bug_report\"}",
+    "response": "{\"type\": \"complaint\"}",
+    "generation_time_s": 0.56,
+    "response_token_count": 8
+  },
+  {
+    "prompt_id": "classify_012",
+    "instruction": "Classify this text by language: english, spanish, french, german, or other. Return as a JSON object with a 'language' field.",
+    "input": "Bonjour, je voudrais r\u00e9server une table pour deux personnes ce soir \u00e0 vingt heures.",
+    "reference": "{\"language\": \"french\"}",
+    "response": "{\"language\": \"french\"}",
+    "generation_time_s": 0.49,
+    "response_token_count": 7
+  },
+  {
+    "prompt_id": "classify_013",
+    "instruction": "Classify the intent of this user message as one of: greeting, question, complaint, booking, or farewell. Return as a JSON object with a 'intent' field.",
+    "input": "Hi there, I'd like to book a table for four at 7pm this Saturday please.",
+    "reference": "{\"intent\": \"booking\"}",
+    "response": "{ \"intent\": \"booking\" }",
+    "generation_time_s": 0.61,
+    "response_token_count": 9
+  },
+  {
+    "prompt_id": "classify_014",
+    "instruction": "Classify this code snippet's primary language as one of: python, javascript, java, rust, or other. Return as a JSON object with a 'language' field.",
+    "input": "fn main() {\n    let mut v = Vec::new();\n    v.push(42);\n    println!(\"{:?}\", v);\n}",
+    "reference": "{\"language\": \"rust\"}",
+    "response": "{\"language\": \"rust\"}",
+    "generation_time_s": 0.47,
+    "response_token_count": 6
+  },
+  {
+    "prompt_id": "classify_015",
+    "instruction": "Classify the difficulty level of this math problem as one of: elementary, middle_school, high_school, undergraduate, or graduate. Return as a JSON object with a 'difficulty' field.",
+    "input": "Prove that the set of all continuous real-valued functions on [0,1] with the sup norm forms a complete metric space.",
+    "reference": "{\"difficulty\": \"undergraduate\"}",
+    "response": "{\"difficulty\": \"undergraduate\"}",
+    "generation_time_s": 0.66,
+    "response_token_count": 10
+  },
+  {
+    "prompt_id": "classify_016",
+    "instruction": "Classify whether this statement is factual or opinion. Return as a JSON object with a 'type' field containing either 'fact' or 'opinion'.",
+    "input": "Water boils at 100 degrees Celsius at standard atmospheric pressure.",
+    "reference": "{\"type\": \"fact\"}",
+    "response": "{\"type\": \"fact\"}",
+    "generation_time_s": 0.44,
+    "response_token_count": 6
+  },
+  {
+    "prompt_id": "classify_017",
+    "instruction": "Classify whether this statement is factual or opinion. Return as a JSON object with a 'type' field containing either 'fact' or 'opinion'.",
+    "input": "Italian food is the best cuisine in the world.",
+    "reference": "{\"type\": \"opinion\"}",
+    "response": "{\"type\": \"opinion\"}",
+    "generation_time_s": 0.53,
+    "response_token_count": 8
+  },
+  {
+    "prompt_id": "classify_018",
+    "instruction": "Classify the toxicity level of this comment as one of: none, mild, moderate, or severe. Return as a JSON object with a 'toxicity' field.",
+    "input": "I respectfully disagree with your analysis. I think there are some data points you may have overlooked.",
+    "reference": "{\"toxicity\": \"none\"}",
+    "response": "{\n\n  \"toxicity\": \"mild\"\n\n}",
+    "generation_time_s": 0.95,
+    "response_token_count": 16
+  },
+  {
+    "prompt_id": "classify_019",
+    "instruction": "Classify this job description's seniority level as one of: intern, junior, mid, senior, or lead. Return as a JSON object with a 'level' field.",
+    "input": "We're looking for a seasoned engineer with 8+ years of experience to lead a team of 5 backend developers and own the architecture of our core platform.",
+    "reference": "{\"level\": \"lead\"}",
+    "response": "{\"level\": \"Lead\"}",
+    "generation_time_s": 0.52,
+    "response_token_count": 7
+  },
+  {
+    "prompt_id": "classify_020",
+    "instruction": "Classify this customer review's star rating as one of: 1, 2, 3, 4, or 5. Return as a JSON object with a 'stars' field (integer).",
+    "input": "Absolutely love this product! Works perfectly, arrived early, and the quality is top-notch. Will definitely buy again.",
+    "reference": "{\"stars\": 5}",
+    "response": "{\n  \"stars\": 5\n}",
+    "generation_time_s": 0.71,
+    "response_token_count": 11
+  },
+  {
+    "prompt_id": "json_repair_001",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{name: \"Alice\", age: 30, city: \"New York\"}",
+    "reference": "{\"name\": \"Alice\", \"age\": 30, \"city\": \"New York\"}",
+    "response": "{\"name\": \"Alice\", \"age\": 30, \"city\": \"New York\"}",
+    "generation_time_s": 1.16,
+    "response_token_count": 21
+  },
+  {
+    "prompt_id": "json_repair_002",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"items\": [\"apple\", \"banana\", \"cherry\",]}",
+    "reference": "{\"items\": [\"apple\", \"banana\", \"cherry\"]}",
+    "response": "{\"items\": [\"apple\", \"banana\", \"cherry\"]}",
+    "generation_time_s": 0.87,
+    "response_token_count": 15
+  },
+  {
+    "prompt_id": "json_repair_003",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{'temperature': 72.5, 'unit': 'fahrenheit'}",
+    "reference": "{\"temperature\": 72.5, \"unit\": \"fahrenheit\"}",
+    "response": "{\"temperature\": 72.5, \"unit\": \"fahrenheit\"}",
+    "generation_time_s": 0.97,
+    "response_token_count": 17
+  },
+  {
+    "prompt_id": "json_repair_004",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"user\": {\"name\": \"Bob\", \"email\": \"bob@test.com\"}",
+    "reference": "{\"user\": {\"name\": \"Bob\", \"email\": \"bob@test.com\"}}",
+    "response": "{\"user\": {\"name\": \"Bob\", \"email\": \"bob@test.com\"}}",
+    "generation_time_s": 1.16,
+    "response_token_count": 21
+  },
+  {
+    "prompt_id": "json_repair_005",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "[{\"id\": 1, \"value\": \"hello\"}, {\"id\": 2, \"value\": \"world\"}",
+    "reference": "[{\"id\": 1, \"value\": \"hello\"}, {\"id\": 2, \"value\": \"world\"}]",
+    "response": "[{\"id\": 1, \"value\": \"hello\"}, {\"id \"id\": 2, \"value\": \"world\"}]",
+    "generation_time_s": 1.5,
+    "response_token_count": 28
+  },
+  {
+    "prompt_id": "json_repair_006",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"name\": \"O'Brien\", \"status\": True, \"count\": None}",
+    "reference": "{\"name\": \"O'Brien\", \"status\": true, \"count\": null}",
+    "response": "{\"name\": \"O'Brien\", \"status\": true, \"count\": null}",
+    "generation_time_s": 1.07,
+    "response_token_count": 19
+  },
+  {
+    "prompt_id": "json_repair_007",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"message\": \"She said \"hello\" to me\"}",
+    "reference": "{\"message\": \"She said \\\"hello\\\" to me\"}",
+    "response": "{\"message\": \"She said hello to me\"}",
+    "generation_time_s": 0.63,
+    "response_token_count": 10
+  },
+  {
+    "prompt_id": "json_repair_008",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"scores\": [95, 87, 92,], \"average\": 91.3,}",
+    "reference": "{\"scores\": [95, 87, 92], \"average\": 91.3}",
+    "response": "{\"scores\": [95, 87, 92], \"average\": 91.3}",
+    "generation_time_s": 1.4,
+    "response_token_count": 26
+  },
+  {
+    "prompt_id": "json_repair_009",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"config\": {\"debug\": true, \"verbose\": false, \"max_retries\": 3, \"timeout\": 30,}}",
+    "reference": "{\"config\": {\"debug\": true, \"verbose\": false, \"max_retries\": 3, \"timeout\": 30}}",
+    "response": "{\"config\": {\"debug\": true, \"verbose\": false, \"max_retries\": 3, \"timeout\": 30}}",
+    "generation_time_s": 1.6,
+    "response_token_count": 30
+  },
+  {
+    "prompt_id": "json_repair_010",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"data\": [{\"x\": 1 \"y\": 2}, {\"x\": 3, \"y\": 4}]}",
+    "reference": "{\"data\": [{\"x\": 1, \"y\": 2}, {\"x\": 3, \"y\": 4}]}",
+    "response": "{\"data\": [{\"x\": 1, \"y\": 2}, {\"x \"x\": 3, \"y\": 4}]}",
+    "generation_time_s": 1.65,
+    "response_token_count": 31
+  },
+  {
+    "prompt_id": "json_repair_011",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"path\": \"C:\\Users\\admin\\docs\"}",
+    "reference": "{\"path\": \"C:\\\\Users\\\\admin\\\\docs\"}",
+    "response": "{\"path\": \"C:\\\\Users\\\\admin\\\\docs\"}",
+    "generation_time_s": 0.73,
+    "response_token_count": 12
+  },
+  {
+    "prompt_id": "json_repair_012",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"enabled\": TRUE, \"disabled\": FALSE, \"value\": NULL}",
+    "reference": "{\"enabled\": true, \"disabled\": false, \"value\": null}",
+    "response": "{\"enabled\": true, \"disabled\": false, \"value\": null}",
+    "generation_time_s": 0.87,
+    "response_token_count": 15
+  },
+  {
+    "prompt_id": "json_repair_013",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"results\": [\n  {\"id\": 1, \"name\": \"test\"}\n  {\"id\": 2, \"name\": \"prod\"}\n]}",
+    "reference": "{\"results\": [{\"id\": 1, \"name\": \"test\"}, {\"id\": 2, \"name\": \"prod\"}]}",
+    "response": "{\"results\": [\n  {\"id\": 1, \"name\": \"test\"},\n  {\"id\": 2, \"name\": \"prod\"}\n]}",
+    "generation_time_s": 1.79,
+    "response_token_count": 34
+  },
+  {
+    "prompt_id": "json_repair_014",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"price\": $29.99, \"currency\": \"USD\"}",
+    "reference": "{\"price\": 29.99, \"currency\": \"USD\"}",
+    "response": "{\"price\": 29.99, \"currency\": \"USD\"}",
+    "generation_time_s": 0.97,
+    "response_token_count": 17
+  },
+  {
+    "prompt_id": "json_repair_015",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"tags\": [\"ml\" \"ai\" \"nlp\"]}",
+    "reference": "{\"tags\": [\"ml\", \"ai\", \"nlp\"]}",
+    "response": "{\"tags\": [\"machine learning\", \"artificial intelligence\", \"natural language processing\"]}",
+    "generation_time_s": 1.07,
+    "response_token_count": 19
+  },
+  {
+    "prompt_id": "json_repair_016",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"nested\": {\"a\": {\"b\": {\"c\": 1}}}",
+    "reference": "{\"nested\": {\"a\": {\"b\": {\"c\": 1}}}}",
+    "response": "{\"nested\": {\"a\": {\"b\": {\"c\": 1}}}}",
+    "generation_time_s": 0.92,
+    "response_token_count": 16
+  },
+  {
+    "prompt_id": "json_repair_017",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"name\": \"test\", \"values\": [1, 2, 3] \"extra\": true}",
+    "reference": "{\"name\": \"test\", \"values\": [1, 2, 3], \"extra\": true}",
+    "response": "{\"name\": \"test\", \"values\": [1, 2, 3], \"extra\": true}",
+    "generation_time_s": 1.26,
+    "response_token_count": 23
+  },
+  {
+    "prompt_id": "json_repair_018",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"description\": \"Line 1\nLine 2\nLine 3\"}",
+    "reference": "{\"description\": \"Line 1\\nLine 2\\nLine 3\"}",
+    "response": "{\"description\": \"Line 1\\nLine 2\\nLine 3\"}",
+    "generation_time_s": 1.02,
+    "response_token_count": 18
+  },
+  {
+    "prompt_id": "json_repair_019",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"count\": 05, \"label\": \"item\"}",
+    "reference": "{\"count\": 5, \"label\": \"item\"}",
+    "response": "{\"count\": 5, \"label\": \"item\"}",
+    "generation_time_s": 0.73,
+    "response_token_count": 12
+  },
+  {
+    "prompt_id": "json_repair_020",
+    "instruction": "Fix the following malformed JSON so it becomes valid. Return only the corrected JSON.",
+    "input": "{\"a\": 1, \"b\": 2, \"a\": 3}",
+    "reference": "{\"a\": 3, \"b\": 2}",
+    "response": "{\"a\": 1, \"b\": 2, \"c\": 3}",
+    "generation_time_s": 1.02,
+    "response_token_count": 18
+  },
+  {
+    "prompt_id": "tool_call_001",
+    "instruction": "Generate a JSON function call to search for flights. The function is called 'search_flights' and takes parameters: origin (string, IATA code), destination (string, IATA code), departure_date (string, ISO format), passengers (integer), cabin_class (string: economy/business/first).",
+    "input": "I need to fly from San Francisco to London on June 15th, 2025. Two passengers, business class.",
+    "reference": "{\"function\": \"search_flights\", \"arguments\": {\"origin\": \"SFO\", \"destination\": \"LHR\", \"departure_date\": \"2025-06-15\", \"passengers\": 2, \"cabin_class\": \"business\"}}",
+    "response": "{\n  \"search_flights\": {\n    \"origin\": \"SFO\",\n    \"destination\": \"LHR\",\n    \"departure_date\": \"2025-06-15\",\n    \"passengers\": 2,\n    \"cabin_class\": \"business\"\n  }\n}",
+    "generation_time_s": 3.85,
+    "response_token_count": 76
+  },
+  {
+    "prompt_id": "tool_call_002",
+    "instruction": "Generate a JSON function call to send an email. The function is called 'send_email' and takes parameters: to (string), subject (string), body (string), cc (array of strings, optional), priority (string: low/normal/high).",
+    "input": "Send an email to john@company.com with subject 'Q1 Report Ready' saying the quarterly report is attached. CC the finance team at finance@company.com. Mark it as high priority.",
+    "reference": "{\"function\": \"send_email\", \"arguments\": {\"to\": \"john@company.com\", \"subject\": \"Q1 Report Ready\", \"body\": \"The quarterly report is attached for your review.\", \"cc\": [\"finance@company.com\"], \"priority\": \"high\"}}",
+    "response": "{\"to\":\"john@company.com\", \"subject\":\"Q1 Report Ready\", \"body\":\"The quarterly report is attached.\", \"cc\":[\"finance@company.com\"], \"priority\":\"high\"}",
+    "generation_time_s": 2.4,
+    "response_token_count": 46
+  },
+  {
+    "prompt_id": "tool_call_003",
+    "instruction": "Generate a JSON function call to query a database. The function is called 'execute_query' and takes parameters: table (string), columns (array of strings), where (object with field/operator/value), order_by (string), limit (integer).",
+    "input": "Get the name and email of the top 10 users from the users table where status is active, ordered by created_at descending.",
+    "reference": "{\"function\": \"execute_query\", \"arguments\": {\"table\": \"users\", \"columns\": [\"name\", \"email\"], \"where\": {\"field\": \"status\", \"operator\": \"=\", \"value\": \"active\"}, \"order_by\": \"created_at DESC\", \"limit\": 10}}",
+    "response": "{\n \"function\": \"execute_query\",\n \"table\": \"users\",\n \"columns\": [\"name\", \"email\"],\n \"where\": {\"status\": \"active\"},\n \"order_by\": \"created_at DESC\",\n \"limit\": 10\n}",
+    "generation_time_s": 2.98,
+    "response_token_count": 58
+  },
+  {
+    "prompt_id": "tool_call_004",
+    "instruction": "Generate a JSON function call to create a calendar event. The function is called 'create_event' and takes parameters: title (string), start_time (string, ISO datetime), end_time (string, ISO datetime), attendees (array of strings), location (string), reminder_minutes (integer).",
+    "input": "Schedule a team standup called 'Daily Sync' tomorrow at 9am for 30 minutes in Conference Room B. Invite alice@co.com and bob@co.com. Set a 10-minute reminder.",
+    "reference": "{\"function\": \"create_event\", \"arguments\": {\"title\": \"Daily Sync\", \"start_time\": \"2025-03-29T09:00:00\", \"end_time\": \"2025-03-29T09:30:00\", \"attendees\": [\"alice@co.com\", \"bob@co.com\"], \"location\": \"Conference Room B\", \"reminder_minutes\": 10}}",
+    "response": "{\n  \"title\": \"Daily Sync\",\n  \"start_time\": \"2022-09-23T09:00:00Z\",\n  \"end_time\": \"2022-09-23T09:30:00Z\",\n  \"attendees\": [\"alice@co.com\", \"bob@co.com\"],\n  \"location\": \"Conference Room B\",\n  \"reminder_minutes\": 10\n}",
+    "generation_time_s": 5.92,
+    "response_token_count": 118
+  },
+  {
+    "prompt_id": "tool_call_005",
+    "instruction": "Generate a JSON function call to resize an image. The function is called 'resize_image' and takes parameters: file_path (string), width (integer), height (integer), maintain_aspect_ratio (boolean), output_format (string: png/jpg/webp).",
+    "input": "Resize the image at /uploads/photo.jpg to 800x600 pixels. Keep the aspect ratio and save as WebP.",
+    "reference": "{\"function\": \"resize_image\", \"arguments\": {\"file_path\": \"/uploads/photo.jpg\", \"width\": 800, \"height\": 600, \"maintain_aspect_ratio\": true, \"output_format\": \"webp\"}}",
+    "response": "{\n  \"function\": \"resize_image\",\n  \"parameters\": {\n    \"file_path\": \"/uploads/photo.jpg\",\n    \"width\": 800,\n    \"height\": 600,\n    \"maintain_aspect_ratio\": true,\n    \"output_format\": \"webp\"\n  }\n}",
+    "generation_time_s": 4.19,
+    "response_token_count": 83
+  },
+  {
+    "prompt_id": "tool_call_006",
+    "instruction": "Generate a JSON function call to translate text. The function is called 'translate_text' and takes parameters: text (string), source_language (string, ISO 639-1 code), target_language (string, ISO 639-1 code), formality (string: formal/informal).",
+    "input": "Translate 'Good morning, how can I help you today?' from English to Japanese using formal tone.",
+    "reference": "{\"function\": \"translate_text\", \"arguments\": {\"text\": \"Good morning, how can I help you today?\", \"source_language\": \"en\", \"target_language\": \"ja\", \"formality\": \"formal\"}}",
+    "response": "{\n\n  \"function\": \"translate_text\",\n\n  \"text\": \"Good morning, how can I help you today?\",\n\n  \"source_language\": \"en\",\n\n  \"target_language\": \"ja\",\n\n  \"formality\": \"formal\"\n\n}",
+    "generation_time_s": 3.36,
+    "response_token_count": 66
+  },
+  {
+    "prompt_id": "tool_call_007",
+    "instruction": "Generate a JSON function call to create a user account. The function is called 'create_user' and takes parameters: username (string), email (string), role (string: admin/editor/viewer), send_welcome_email (boolean), team_id (string).",
+    "input": "Create an editor account for Maria with username 'maria.g' and email maria.garcia@company.com on team TEAM-042. Send her a welcome email.",
+    "reference": "{\"function\": \"create_user\", \"arguments\": {\"username\": \"maria.g\", \"email\": \"maria.garcia@company.com\", \"role\": \"editor\", \"send_welcome_email\": true, \"team_id\": \"TEAM-042\"}}",
+    "response": "{\"username\": \"maria.g\", \"email\": \"maria.garcia@company.com\", \"role\": \"editor\", \"send_welcome_email\": true, \"team_id\": \"TEAM-042\"}",
+    "generation_time_s": 2.69,
+    "response_token_count": 52
+  },
+  {
+    "prompt_id": "tool_call_008",
+    "instruction": "Generate a JSON function call to deploy an application. The function is called 'deploy_app' and takes parameters: app_name (string), environment (string: staging/production), version (string), rollback_on_failure (boolean), notify_channel (string).",
+    "input": "Deploy version 2.4.1 of the payments-service to production. Enable automatic rollback if it fails. Notify the #deployments Slack channel.",
+    "reference": "{\"function\": \"deploy_app\", \"arguments\": {\"app_name\": \"payments-service\", \"environment\": \"production\", \"version\": \"2.4.1\", \"rollback_on_failure\": true, \"notify_channel\": \"#deployments\"}}",
+    "response": "{\"function\": \"deploy_app\", \"parameters\": {\"app_name\": \"payments-service\", \"environment\": \"production\", \"version\": \"2.4.1\", \"rollback_on_failure\": true, \"notify_channel\": \"#deployments\"}}",
+    "generation_time_s": 3.03,
+    "response_token_count": 59
+  },
+  {
+    "prompt_id": "tool_call_009",
+    "instruction": "Generate a JSON function call to search a knowledge base. The function is called 'search_kb' and takes parameters: query (string), max_results (integer), filters (object with optional category and date_range fields), include_snippets (boolean).",
+    "input": "Search our knowledge base for articles about password reset, limited to the 'security' category, from the last 90 days. Return top 5 results with snippets.",
+    "reference": "{\"function\": \"search_kb\", \"arguments\": {\"query\": \"password reset\", \"max_results\": 5, \"filters\": {\"category\": \"security\", \"date_range\": \"last_90_days\"}, \"include_snippets\": true}}",
+    "response": "{\n  \"query\": \"password reset\",\n  \"max_results\": 5,\n  \"filters\": {\n    \"category\": \"security\",\n    \"date_range\": {\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-03-31\"\n    }\n  },\n  \"include_snippets\": true\n}",
+    "generation_time_s": 4.91,
+    "response_token_count": 98
+  },
+  {
+    "prompt_id": "tool_call_010",
+    "instruction": "Generate a JSON function call to generate a report. The function is called 'generate_report' and takes parameters: report_type (string), date_from (string), date_to (string), format (string: pdf/csv/xlsx), include_charts (boolean), email_to (string, optional).",
+    "input": "Generate a PDF sales report for January 2025 with charts and email it to manager@company.com.",
+    "reference": "{\"function\": \"generate_report\", \"arguments\": {\"report_type\": \"sales\", \"date_from\": \"2025-01-01\", \"date_to\": \"2025-01-31\", \"format\": \"pdf\", \"include_charts\": true, \"email_to\": \"manager@company.com\"}}",
+    "response": "{\n \"report_type\": \"sales\",\n \"date_from\": \"2025-01-01\",\n \"date_to\": \"2025-01-31\",\n \"format\": \"pdf\",\n \"include_charts\": true,\n \"email_to\": \"manager@company.com\"\n}",
+    "generation_time_s": 3.9,
+    "response_token_count": 77
+  },
+  {
+    "prompt_id": "tool_call_011",
+    "instruction": "Generate a JSON function call to book a restaurant reservation. The function is called 'book_reservation' and takes parameters: restaurant_id (string), date (string), time (string, 24h format), party_size (integer), special_requests (string, optional).",
+    "input": "Book a table for 6 at restaurant RST-1234 on April 5th at 7:30 PM. We need a high chair for a toddler.",
+    "reference": "{\"function\": \"book_reservation\", \"arguments\": {\"restaurant_id\": \"RST-1234\", \"date\": \"2025-04-05\", \"time\": \"19:30\", \"party_size\": 6, \"special_requests\": \"Need a high chair for a toddler\"}}",
+    "response": "{\n\n  \"function\": \"book_reservation\",\n\n  \"parameters\": {\n\n    \"restaurant_id\": \"RST-1234\",\n\n    \"date\": \"April 5th\",\n\n    \"time\": \"7:30 PM\",\n\n    \"party_size\": 6,\n\n    \"special_requests\": \"High chair for toddler\"\n\n  }\n\n}",
+    "generation_time_s": 4.96,
+    "response_token_count": 99
+  },
+  {
+    "prompt_id": "tool_call_012",
+    "instruction": "Generate a JSON function call to set a reminder. The function is called 'set_reminder' and takes parameters: message (string), remind_at (string, ISO datetime), recurring (boolean), recurrence_pattern (string: daily/weekly/monthly, optional), priority (string: low/medium/high).",
+    "input": "Remind me every Monday at 9am to submit my weekly status report. High priority.",
+    "reference": "{\"function\": \"set_reminder\", \"arguments\": {\"message\": \"Submit weekly status report\", \"remind_at\": \"2025-03-31T09:00:00\", \"recurring\": true, \"recurrence_pattern\": \"weekly\", \"priority\": \"high\"}}",
+    "response": "{\n\n  \"function\": \"set_reminder\",\n\n  \"message\": \"submit my weekly status report\",\n\n  \"remind_at\": \"2021-04-06T09:00:00Z\",\n\n  \"recurring\": true,\n\n  \"recurrence_pattern\": \"weekly\",\n\n  \"priority\": \"high\"\n\n}",
+    "generation_time_s": 4.73,
+    "response_token_count": 94
+  },
+  {
+    "prompt_id": "tool_call_013",
+    "instruction": "Generate a JSON function call to analyze text sentiment. The function is called 'analyze_sentiment' and takes parameters: text (string), language (string), granularity (string: document/sentence), include_entities (boolean).",
+    "input": "Analyze the sentiment of this Spanish customer review at the sentence level and extract entities: 'El producto es excelente pero el env\u00edo fue muy lento.'",
+    "reference": "{\"function\": \"analyze_sentiment\", \"arguments\": {\"text\": \"El producto es excelente pero el env\u00edo fue muy lento.\", \"language\": \"es\", \"granularity\": \"sentence\", \"include_entities\": true}}",
+    "response": "{\n  \"function\": \"analyze_sentiment\",\n  \"text\": \"El producto es excelente pero el env\u00edo fue muy lento.\",\n  \"language\": \"Spanish\",\n  \"granularity\": \"sentence\",\n  \"include_entities\": true\n}",
+    "generation_time_s": 3.37,
+    "response_token_count": 66
+  },
+  {
+    "prompt_id": "tool_call_014",
+    "instruction": "Generate a JSON function call to create a GitHub issue. The function is called 'create_issue' and takes parameters: repo (string, format: owner/repo), title (string), body (string), labels (array of strings), assignees (array of strings), milestone (string, optional).",
+    "input": "Create an issue on acme/backend-api titled 'Fix timeout on /users endpoint'. Describe that the endpoint times out after 5s under load. Label it 'bug' and 'performance'. Assign to devteam-alice. Add to milestone v3.1.",
+    "reference": "{\"function\": \"create_issue\", \"arguments\": {\"repo\": \"acme/backend-api\", \"title\": \"Fix timeout on /users endpoint\", \"body\": \"The /users endpoint times out after 5 seconds under load. Needs investigation and optimization.\", \"labels\": [\"bug\", \"performance\"], \"assignees\": [\"devteam-alice\"], \"milestone\": \"v3.1\"}}",
+    "response": "{\n    \"repo\": \"acme/backend-api\",\n    \"title\": \"Fix timeout on /users endpoint\",\n    \"body\": \"The /users endpoint times out after 5s under load.\",\n    \"labels\": [\"bug\", \"performance\"],\n    \"assignees\": [\"devteam-alice\"],\n    \"milestone\": \"v3.1\"\n}",
+    "generation_time_s": 4.44,
+    "response_token_count": 87
+  },
+  {
+    "prompt_id": "tool_call_015",
+    "instruction": "Generate a JSON function call to convert currency. The function is called 'convert_currency' and takes parameters: amount (number), from_currency (string, ISO 4217), to_currency (string, ISO 4217), date (string, optional for historical rate).",
+    "input": "Convert 5000 US dollars to Japanese yen using today's rate.",
+    "reference": "{\"function\": \"convert_currency\", \"arguments\": {\"amount\": 5000, \"from_currency\": \"USD\", \"to_currency\": \"JPY\"}}",
+    "response": "{\"amount\":5000,\"from_currency\":\"USD\",\"to_currency\":\"JPY\",\"date\":\"2020-12-18\"}",
+    "generation_time_s": 1.87,
+    "response_token_count": 35
+  },
+  {
+    "prompt_id": "tool_call_016",
+    "instruction": "Generate a JSON function call to schedule a batch job. The function is called 'schedule_batch_job' and takes parameters: job_name (string), cron_expression (string), script_path (string), timeout_seconds (integer), retries (integer), environment_vars (object).",
+    "input": "Schedule a nightly data sync job called 'sync-orders' at 2am UTC. It runs /scripts/sync.py with a 1-hour timeout and 3 retries. Set DB_HOST to prod-db.internal.",
+    "reference": "{\"function\": \"schedule_batch_job\", \"arguments\": {\"job_name\": \"sync-orders\", \"cron_expression\": \"0 2 * * *\", \"script_path\": \"/scripts/sync.py\", \"timeout_seconds\": 3600, \"retries\": 3, \"environment_vars\": {\"DB_HOST\": \"prod-db.internal\"}}}",
+    "response": "{\n  \"job_name\": \"sync-orders\",\n  \"cron_expression\": \"0 2 * * *\",\n  \"script_path\": \"/scripts/sync.py\",\n  \"timeout_seconds\": 3600,\n  \"retries\": 3,\n  \"environment_vars\": {\n    \"DB_HOST\": \"prod-db.internal\"\n  }\n}",
+    "generation_time_s": 4.63,
+    "response_token_count": 92
+  },
+  {
+    "prompt_id": "tool_call_017",
+    "instruction": "Generate a JSON function call to search for nearby places. The function is called 'search_places' and takes parameters: query (string), latitude (number), longitude (number), radius_meters (integer), type (string: restaurant/hotel/gas_station/hospital), max_results (integer).",
+    "input": "Find the 5 closest hospitals within 10km of downtown Austin (latitude 30.2672, longitude -97.7431).",
+    "reference": "{\"function\": \"search_places\", \"arguments\": {\"query\": \"hospital\", \"latitude\": 30.2672, \"longitude\": -97.7431, \"radius_meters\": 10000, \"type\": \"hospital\", \"max_results\": 5}}",
+    "response": "{\"search_places\": {\"query\": \"hospitals\", \"latitude\": 30.2672, \"longitude\": -97.7431, \"radius_meters\": 10000, \"type\": \"hospital\", \"max_results\": 5}}",
+    "generation_time_s": 3.52,
+    "response_token_count": 69
+  },
+  {
+    "prompt_id": "tool_call_018",
+    "instruction": "Generate a JSON function call to upload a file to cloud storage. The function is called 'upload_file' and takes parameters: local_path (string), bucket (string), destination_key (string), content_type (string), make_public (boolean), metadata (object, optional).",
+    "input": "Upload /tmp/report.pdf to the 'company-docs' S3 bucket at reports/2025/q1-report.pdf. Set content type to application/pdf. Keep it private. Add metadata tag department=finance.",
+    "reference": "{\"function\": \"upload_file\", \"arguments\": {\"local_path\": \"/tmp/report.pdf\", \"bucket\": \"company-docs\", \"destination_key\": \"reports/2025/q1-report.pdf\", \"content_type\": \"application/pdf\", \"make_public\": false, \"metadata\": {\"department\": \"finance\"}}}",
+    "response": "{\n\n  \"local_path\": \"/tmp/report.pdf\",\n\n  \"bucket\": \"company-docs\",\n\n  \"destination_key\": \"reports/2025/q1-report.pdf\",\n\n  \"content_type\": \"application/pdf\",\n\n  \"make_public\": false,\n\n  \"metadata\": {\n\n    \"department\": \"finance\"\n\n  }\n\n}",
+    "generation_time_s": 4.98,
+    "response_token_count": 99
+  },
+  {
+    "prompt_id": "tool_call_019",
+    "instruction": "Generate a JSON function call to send a Slack notification. The function is called 'send_slack_message' and takes parameters: channel (string), message (string), blocks (array, optional), thread_ts (string, optional), unfurl_links (boolean).",
+    "input": "Post a message to #engineering saying 'Deployment v2.5 is live in production. Please monitor dashboards.' Don't unfurl any links.",
+    "reference": "{\"function\": \"send_slack_message\", \"arguments\": {\"channel\": \"#engineering\", \"message\": \"Deployment v2.5 is live in production. Please monitor dashboards.\", \"unfurl_links\": false}}",
+    "response": "{\"channel\": \"#engineering\", \"message\": \"Deployment v2.5 is live in production. Please monitor dashboards.\", \"blocks\": [], \"thread_ts\": null, \"unfurl_links\": false}",
+    "generation_time_s": 2.5,
+    "response_token_count": 48
+  },
+  {
+    "prompt_id": "tool_call_020",
+    "instruction": "Generate a JSON function call to run a machine learning prediction. The function is called 'predict' and takes parameters: model_id (string), input_data (object), return_probabilities (boolean), explain (boolean), timeout_ms (integer).",
+    "input": "Run prediction using model 'churn-predictor-v3' with input features: tenure_months=24, monthly_charges=79.99, contract_type='month-to-month', total_charges=1920. Return probabilities and explanations. 5 second timeout.",
+    "reference": "{\"function\": \"predict\", \"arguments\": {\"model_id\": \"churn-predictor-v3\", \"input_data\": {\"tenure_months\": 24, \"monthly_charges\": 79.99, \"contract_type\": \"month-to-month\", \"total_charges\": 1920}, \"return_probabilities\": true, \"explain\": true, \"timeout_ms\": 5000}}",
+    "response": "{\n  \"model_id\": \"churn-predictor-v3\",\n  \"input_data\": {\n    \"tenure_months\": 24,\n    \"monthly_charges\": 79.99,\n    \"contract_type\": \"month-to-month\",\n    \"total_charges\": 1920\n  },\n  \"return_probabilities\": true,\n  \"explain\": true,\n  \"timeout_ms\": 5000\n}",
+    "generation_time_s": 5.94,
+    "response_token_count": 118
+  }
+]
