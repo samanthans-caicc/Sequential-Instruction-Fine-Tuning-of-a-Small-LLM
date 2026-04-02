@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:1
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/judge_eval_%j.out
 #SBATCH --error=logs/judge_eval_%j.err
@@ -12,7 +12,7 @@
 # ===========================================================================
 # Judge Evaluation — Llama 3.1 70B Instruct pairwise scoring
 # ---------------------------------------------------------------------------
-# GPU: 4 × V100-PCIE-32GB (128 GB total) — required for 70B at 4-bit (~35 GB)
+# GPU: 1 × V100-PCIE-32GB — sufficient for 8B at 4-bit (~6 GB)
 # Partition: gpu4v100 (4-GPU node)
 # Expected runtime: ~6–8 hrs for 3 pairs × 2 eval types × ~250 prompts
 #
@@ -73,7 +73,7 @@ mkdir -p logs eval_results
 # ---------------------------------------------------------------------------
 echo ""
 echo ">>> Running judge evaluation (all pairs, both eval types)..."
-echo "    Judge: meta-llama/Llama-3.1-70B-Instruct"
+echo "    Judge: meta-llama/Llama-3.1-8B-Instruct"
 echo "    Pairs: 0v1, 1v2, 0v2"
 echo "    Eval types: alpaca, json"
 echo ""

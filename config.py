@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 
 STUDENT_MODEL_ID   = "microsoft/Phi-3.5-mini-instruct"
 TEACHER_MODEL_ID   = "meta-llama/Llama-3.1-8B-Instruct"
-JUDGE_MODEL_ID     = "meta-llama/Llama-3.1-70B-Instruct"
+JUDGE_MODEL_ID     = "meta-llama/Llama-3.1-8B-Instruct"
 
 
 # ---------------------------------------------------------------------------
