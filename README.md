@@ -152,7 +152,7 @@ sbatch slurm/stage2_json_train.sbatch
 sbatch slurm/judge_eval.sbatch
 ```
 
-> Update the project path in each `.sbatch` file from `/home/xso947/fluffy-umbrella` to your own home directory before submitting.
+> Update the project path in each `.sbatch` file from `/home/xso947/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM` to your own home directory before submitting.
 
 Logs are written to `logs/<jobname>_<jobid>.out` / `.err`.
 

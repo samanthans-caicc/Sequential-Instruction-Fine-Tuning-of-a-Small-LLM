@@ -46,7 +46,7 @@ nvidia-smi
 python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}, GPU count: {torch.cuda.device_count()}')"
 echo ""
 
-cd /home/xso947/fluffy-umbrella || { echo "Project directory not found!"; exit 1; }
+cd /home/xso947/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM || { echo "Project directory not found!"; exit 1; }
 
 export HF_TOKEN=$HF_TOKEN
 

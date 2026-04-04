@@ -41,7 +41,7 @@ nvidia-smi
 python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}, Device: {torch.cuda.get_device_name(0)}')"
 echo ""
 
-cd /home/xso947/fluffy-umbrella || { echo "Project directory not found!"; exit 1; }
+cd /home/xso947/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM || { echo "Project directory not found!"; exit 1; }
 
 # Check that Stage 1 checkpoint exists
 if [ ! -d "checkpoints/stage1" ]; then
@@ -74,7 +74,7 @@ python modular-code/inference.py \
     --checkpoints 2 \
     --alpaca-eval data/alpaca_eval.json \
     --json-eval data/json_eval.json \
-    --output-dir /home/xso947/fluffy-umbrella/outputs
+    --output-dir /home/xso947/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM/outputs
 
 echo ""
 echo "=============================================="

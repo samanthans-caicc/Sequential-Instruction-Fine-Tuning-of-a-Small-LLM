@@ -51,7 +51,7 @@ echo "--- GPU Info ---"
 nvidia-smi
 echo ""
 
-cd /home/xso947/fluffy-umbrella || { echo "Project directory not found!"; exit 1; }
+cd /home/xso947/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM || { echo "Project directory not found!"; exit 1; }
 
 # HuggingFace token for gated models (Llama 3.1 70B)
 export HF_TOKEN=$HF_TOKEN

@@ -40,7 +40,7 @@ conda activate llm
 # 2. Verify GPU and Stage 1 checkpoint
 # ---------------------------------------------------------------------------
 nvidia-smi
-cd /home/xso947/fluffy-umbrella || { echo "Project directory not found!"; exit 1; }
+cd /home/xso947/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM || { echo "Project directory not found!"; exit 1; }
 
 if [ ! -d "checkpoints/stage1" ]; then
     echo "ERROR: Stage 1 checkpoint not found. Run stage1 first."

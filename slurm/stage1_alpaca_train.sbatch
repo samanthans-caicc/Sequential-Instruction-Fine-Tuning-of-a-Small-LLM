@@ -50,7 +50,7 @@ echo ""
 # 3. Navigate to project directory
 # ---------------------------------------------------------------------------
 # IMPORTANT: Update this path to your actual project location on Arc
-cd /home/xso947/fluffy-umbrella || { echo "Project directory not found!"; exit 1; }
+cd /home/xso947/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM || { echo "Project directory not found!"; exit 1; }
 
 # Create logs directory if it doesn't exist
 mkdir -p logs checkpoints/stage1 data
@@ -85,7 +85,7 @@ python modular-code/inference.py \
     --checkpoints 1 \
     --alpaca-eval data/alpaca_eval.json \
     --json-eval data/json_eval.json \
-    --output-dir /home/xso947/fluffy-umbrella/outputs
+    --output-dir /home/xso947/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM/outputs
 
 echo ""
 echo "=============================================="

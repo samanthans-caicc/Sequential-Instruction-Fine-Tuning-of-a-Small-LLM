@@ -361,7 +361,7 @@
   {
     "task_type": "tool_call_argument_generation",
     "instruction": "Generate a JSON tool call for the function 'create_github_issue' with these parameters: owner (string), repo (string), title (string), body (string), labels (array of strings), assignees (array of strings), milestone (integer or null). The 'function_name' field must also be present.",
-    "input": "Create a bug report on 'samanthans-caicc/fluffy-umbrella' about inference.py crashing when the checkpoint path contains spaces. Assign to 'samanthans-caicc' with label 'bug'."
+    "input": "Create a bug report on 'samanthans-caicc/Sequential-Instruction-Fine-Tuning-of-a-Small-LLM' about inference.py crashing when the checkpoint path contains spaces. Assign to 'samanthans-caicc' with label 'bug'."
   },
   {
     "task_type": "tool_call_argument_generation",
