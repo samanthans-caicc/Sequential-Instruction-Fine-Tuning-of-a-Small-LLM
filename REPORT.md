@@ -20,6 +20,7 @@
 | json_repair | 974 |
 | schema_constrained_generation | 942 |
 | tool_call_argument_generation | 1,013 |
+##### Table 1: Task type and their n values
 
 <ins>**Hyperparameters**</ins>
 
@@ -32,6 +33,7 @@
 | Effective batch | 16 | 16 |
 | Max seq length | 1024 | 2048 |
 | Precision | fp16 | fp16 |
+##### Table 2: Hyperparameters for stages 1 and 2
 
 <ins>**UTSA HPC Setup:**</ins> Both stages runs on Arc `gpu4v100` (Tesla V100-32GB) via `sbatch`. Jobs were checkpointed for safety measures just in case a job could not be done at a certain point, or when the time limit (6 hours) was up. Dependenices were installed via `pip install -r requirements.txt` whereas PyTorch was separately pinned to 2.5.1+cu121 to match the CUDA 12.3 driver on V100 nodes. H100 and A100 were considered, but had to be dropped due to restrictive access and node limitations, respectively.
 
@@ -47,6 +49,54 @@ This data can be found under [Experiments](#2.-Experiments).
 
 ## 2. Experiments
 <details>
+
+### 2.1 The Three Checkpoint Comparison
+#####
+| Checkpoint | Alpaca Judge Win Rate | ROUGE-L / BERTScore F1 | JSON Validity | Schema Compliance | Exact Match |
+|---|---|---|---|---|---|
+| Ckpt 0: Untuned base | — (n=5†) | 0.158† / 0.752† | 80.0%† | 80.0%† | 0.0%† |
+| Ckpt 1: After Stage 1 (Alpaca) | 60%† vs Ckpt 0 | 0.402 / 0.853 | 93.0% | 65.0% | 38.0% |
+| Ckpt 2: After Stage 2 (JSON) | 40%† vs Ckpt 0 | 0.337 / 0.825 | 90.0% | 63.0% | 33.0% |
+> †n=5; interpret with caution. Ckpt 0 JSON metrics unreliable at this sample size.
+##### Table 3: The three checkpoint comparison
+___
+
+### 2.2 Alpaca Evaluation Results
+
+#### **2.2.1 Pairwise win rates (judge: Llama 3.1 8B Instruct):**
+
+| Comparison | Win | Tie | Loss | n |
+|---|---|---|---|---|
+| Checkpoint 1 vs Checkpoint 0 | 3 | 0 | 2 | 5† |
+| Checkpoint 2 vs Checkpoint 0 | 2 | 0 | 3 | 5† |
+| Checkpoint 2 vs Checkpoint 1 | 81 | 81 | 88 | 250 |
+> †n=5 due to early termination of Checkpoint 0 inference job.
+##### Table 4: Pairwise win rates between checkpoints
+___
+
+#### **2.2.2 Average judge scores per dimension — Alpaca eval (Ckpt 1 vs Ckpt 2, n=250):**
+
+| Dimension | Ckpt 1 | Ckpt 2 | Delta |
+|---|---|---|---|
+| Instruction Following | 4.68 | 4.59 | −0.09 |
+| Correctness | 4.52 | 4.52 | 0.00 |
+| Clarity | 4.61 | 4.54 | −0.07 |
+| Completeness | 4.54 | 4.42 | −0.12 |
+| Structured Output Validity | 4.89 | 4.81 | −0.08 |
+| Hallucination Risk | 4.71 | 4.74 | +0.03 |
+> Ckpt 0 dimension averages omitted (n=5; too small for reliable estimates).
+##### Table 5: Average judge scores per dimension via Alpaca evaluation
+___
+
+#### **2.2.3 Automatic metrics (Alpaca held-out set, n=250):**
+
+| Metric | Ckpt 0† | Ckpt 1 | Ckpt 2 |
+|---|---|---|---|
+| ROUGE-L | 0.158 | 0.402 | 0.337 |
+| BERTScore F1 | 0.752 | 0.853 | 0.825 |
+| Avg response tokens | 220.4 | 63.0 | 46.8 |
+> †n=5 only.
+##### Table 6: Metrics (computed via `compute_metrics.py`
 
 
 </details>
