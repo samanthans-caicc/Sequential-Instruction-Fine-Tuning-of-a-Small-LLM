@@ -5,9 +5,9 @@
 
 <ins>**Student Model**:</ins> As per recommended default model justified by its strong small-model benchmark performance, native support for the Phi-3 chat template, and practical sustainability for QLoRA-based post-training on a single 32GB V100, I decided to go ahead with the [**`Phi-3.5 Mini Instruct`**](https://huggingface.co/microsoft/Phi-3.5-mini-instruct) model for my student model.
 
-<ins>**Stage 1 - Alpaca Data:**</ins> The first stage of training uses `tatsu-lab/alpaca` from Starnford Alpaca that contains 52,000 examples. Out of the 52K examples, a sample size of 5,000 was drawn at random to account for HPC job time limits. Taking all 52K examples for training would take approximately 57 hours whereas 5K only took 2 hours. Samples were orgnanized into `(instruction, input, output)` formats using the Phi-3.5 chat templates. Around 250 samples were reserved for evaluation and never used for training for standard machine learning practices. These 250 samples were used to measure whether the model learned the *pattern* (followed instructions well) vs. just memorizing the training examples.
+<ins>**Stage 1 - Alpaca Data:**</ins> The first stage of training uses `tatsu-lab/alpaca` from Stanford Alpaca that contains 52,000 examples. Out of the 52K examples, a sample size of 5,000 was drawn at random to account for HPC job time limits. Taking all 52K examples for training would take approximately 57 hours whereas 5K only took 2 hours. Samples were organized into `(instruction, input, output)` formats using the Phi-3.5 chat templates. Around 250 samples were reserved for evaluation and never used for training for standard machine learning practices. These 250 samples were used to measure whether the model learned the *pattern* (followed instructions well) vs. just memorizing the training examples.
 
-<ins>**Stage 2 - Teacher-Generated JSON:**</ins> created with imitatuion learning via Llama 3.1 8B Instruct. 70B was considered, but had to be dropped due to the 32GB VRAM limit. The pipeline consisted of:
+<ins>**Stage 2 - Teacher-Generated JSON:**</ins> Created with imitation learning via Llama 3.1 8B Instruct. 70B was considered, but had to be dropped due to the 32GB VRAM limit. The pipeline consisted of:
 1. five task prompt types
 2. batch through teacher on Arc (UTSA)
 3. validate via `json.loads` where it discarded invalids and checkpoints after every 50 for safety measures
@@ -35,11 +35,11 @@
 | Precision | fp16 | fp16 |
 ##### Table 2: Hyperparameters for stages 1 and 2
 
-<ins>**UTSA HPC Setup:**</ins> Both stages runs on Arc `gpu4v100` (Tesla V100-32GB) via `sbatch`. Jobs were checkpointed for safety measures just in case a job could not be done at a certain point, or when the time limit (6 hours) was up. Dependenices were installed via `pip install -r requirements.txt` whereas PyTorch was separately pinned to 2.5.1+cu121 to match the CUDA 12.3 driver on V100 nodes. H100 and A100 were considered, but had to be dropped due to restrictive access and node limitations, respectively.
+<ins>**UTSA HPC Setup:**</ins> Both stages runs on Arc `gpu4v100` (Tesla V100-32GB) via `sbatch`. Jobs were checkpointed for safety measures just in case a job could not be done at a certain point, or when the time limit (6 hours) was up. Dependencies were installed via `pip install -r requirements.txt` whereas PyTorch was separately pinned to 2.5.1+cu121 to match the CUDA 12.3 driver on V100 nodes. H100 and A100 were considered, but had to be dropped due to restrictive access and node limitations, respectively.
 
 <ins>**Judge:**</ins> Llama 3.1 8B Instruct; same VRAM constraint as teacher where the 70B was not feasible for either case.
 
-<ins>**Evalutation:**</ins> Three checkpoints were compared on basis of Alpaca judge win rate, Rouge-L BERTScore, JSON Validity, Scheme Compliance, and Exact Match:
+<ins>**Evaluation:**</ins> Three checkpoints were compared on basis of Alpaca judge win rate, ROUGE-L, BERTScore, JSON Validity, Schema Compliance, and Exact Match:
 1. Checkpoint 0 (base)
 2. Checkpoint 1 (post stage 1)
 3. Checkpoint 2 (post stage 2)
@@ -166,7 +166,7 @@ ___
 ## 3. Analysis
 
 > [!NOTE]
-> All tables can be found in [Experiments](#2-experiments).
+> All tables referenced can be found in [Experiments](#2-experiments).
 
 <details>
 
@@ -178,9 +178,15 @@ This was the most drastic shift between stages. Before stage 1, the model genera
 #### 3.1.2 Checkpoint 1 -> Checkpoint 2:
 Unlike Checkpoint 0 to Checkpoint 1, the shift between checkpoints 1 and 2 was much more subtle than the former shift. Responses shorten further from 63 to 47 tokens on average as the model internalized the compact structure of JSON outputs.
 
+Things to note are JSON metrics at Checkpoint 2 dropped *slightly* compared to Checkpoint 1 with 90% vs. 93% validity and 33% vs. 38% exact match shown in Table 7 in the section above. Phi-3.5-Mini Instruct was already capable for structured outputs after Stage 1 thus leaving a little room for improvement during Stage 2 and possibly cause minor disruption to existing patterns.
+
 ### 3.2 Forgetting vs. Retention
 
+From Table 4, the Alpaca win rate between checkpoint 2 vs. checkpoint 1
+
 ### 3.3 Implications for Sequential Fine-Tuning
+
+This experiment provides empirical evidence that a conservative two-stage sequential fine-tuning strategy largely avoids catastrophic forgetting under realistic HPC constraints.
 
 </details>
 
