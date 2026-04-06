@@ -120,7 +120,7 @@ ___
 | Schema Compliance | 80.0% | 65.0% | 63.0% |
 | Exact Match | 0.0% | 38.0% | 33.0% |
 > †n=5 only. Judge pairwise scores on the JSON held-out set are reported below.
-##### Table 7:
+##### Table 7: Auomatic metrics for JSON held-out sets for n = 100 (computed via `compute_metrics.py`).
 ___
 
 #### **2.3.2 Pairwise win rates — JSON eval (judge: Llama 3.1 8B Instruct):**
@@ -131,7 +131,7 @@ ___
 | Checkpoint 2 vs Checkpoint 0 | 2 | 1 | 2 | 5† |
 | Checkpoint 2 vs Checkpoint 1 | 30 | 41 | 29 | 100 |
 > †n=5 due to early termination of Checkpoint 0 inference job.
-##### Table 8:
+##### Table 8: Pairwise win rates for JSON evaluations.
 ___
 
 #### **2.3.3 Average judge scores per dimension — JSON eval (Ckpt 1 vs Ckpt 2, n=100):**
@@ -144,7 +144,7 @@ ___
 | Completeness | 4.70 | 4.71 | +0.01 |
 | Structured Output Validity | 4.66 | 4.69 | +0.03 |
 | Hallucination Risk | 4.77 | 4.76 | −0.01 |
-##### Table 9:
+##### Table 9: Average judge scores per dimensions for JSON evaluations.
 
 </details>
 
@@ -158,6 +158,7 @@ ___
 | JSON judge win rate vs opponent (decisive only) | 29/59 = 49.2% | 30/59 = 50.8% | +1.7 pp |
 | Avg alpaca dimension score (mean of 6 dims) | 4.66 | 4.60 | −0.06 |
 | Avg JSON dimension score (mean of 6 dims) | 4.72 | 4.73 | +0.01 |
+##### Table 10: Forgetting Analysis metrics.
 
 </details>
 
@@ -176,13 +177,13 @@ ___
 This was the most drastic shift between stages. Before stage 1, the model generates vague and run-on responses (average 220 tokens). After stage 1, responses are much tighter, more concise, and directly on-task (average 63 tokens). JSON validity also jumped from ~80% to ~93% shown by Tables 6 and 7.
 
 #### 3.1.2 Checkpoint 1 -> Checkpoint 2:
-Unlike Checkpoint 0 to Checkpoint 1, the shift between checkpoints 1 and 2 was much more subtle than the former shift. Responses shorten further from 63 to 47 tokens on average as the model internalized the compact structure of JSON outputs.
+Unlike Checkpoint 0 to Checkpoint 1, the shift between checkpoints 1 and 2 was much more subtle than the former. Responses shorten further from 63 to 47 tokens on average as the model internalized the compact structure of JSON outputs.
 
 Things to note are JSON metrics at Checkpoint 2 dropped *slightly* compared to Checkpoint 1 with 90% vs. 93% validity and 33% vs. 38% exact match shown in Table 7 in the section above. Phi-3.5-Mini Instruct was already capable for structured outputs after Stage 1 thus leaving a little room for improvement during Stage 2 and possibly cause minor disruption to existing patterns.
 
 ### 3.2 Forgetting vs. Retention
 
-From Table 4, the Alpaca win rate between checkpoint 2 vs. checkpoint 1
+This is where things really become interesting. Using the data from Table 5 of the Checkpoint 2 vs. Checkpoint 1 evaluations calculated (Table 4 shows the win-lose-tie rates), 
 
 ### 3.3 Implications for Sequential Fine-Tuning
 
